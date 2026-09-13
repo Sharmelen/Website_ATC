@@ -1,0 +1,2970 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ATC Information Portal</title>
+
+<style>
+
+/* =========================================
+   GLOBAL
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+html,
+body {
+    min-height: 100%;
+}
+
+body {
+
+    background:
+        radial-gradient(
+            circle at 50% 20%,
+            rgba(0, 110, 160, 0.18),
+            transparent 45%
+        ),
+        linear-gradient(
+            135deg,
+            #020b13,
+            #061a29,
+            #03111c
+        );
+
+    color: #ffffff;
+
+    overflow-x: hidden;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.header {
+
+    width: 100%;
+
+    min-height: 175px;
+
+    background:
+        rgba(3, 17, 29, 0.97);
+
+    border-bottom:
+        1px solid rgba(0, 180, 255, 0.25);
+
+    box-shadow:
+        0 4px 20px rgba(0, 0, 0, 0.35);
+
+    position: relative;
+
+    z-index: 100;
+
+    padding-top: 48px;
+
+    /* IMPORTANT:
+       Aircraft cannot escape the header */
+    overflow: hidden;
+}
+
+
+/* =========================================
+   AIRCRAFT ANIMATION AREA
+========================================= */
+
+.aircraft-layer {
+
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+
+    overflow: hidden;
+
+    pointer-events: none;
+
+    z-index: 1;
+}
+
+
+/* =========================================
+   AIRCRAFT
+========================================= */
+
+.aircraft {
+
+    position: absolute;
+
+    width: 55px;
+
+    height: 55px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    opacity: 0;
+
+    filter:
+        drop-shadow(
+            0 0 5px rgba(0,191,255,0.7)
+        );
+
+    color: rgba(95, 220, 255, 0.75);
+
+    font-size: 30px;
+
+    will-change: transform;
+
+}
+
+
+/* =========================================
+   AIRCRAFT 1
+   LEFT → RIGHT
+========================================= */
+
+.aircraft-1 {
+
+    left: -80px;
+
+    top: 25px;
+
+    animation:
+        aircraftLeftRight
+        13s linear
+        infinite;
+
+    animation-delay:
+        0s;
+}
+
+
+@keyframes aircraftLeftRight {
+
+    0% {
+
+        transform:
+            translateX(-100px)
+            translateY(0)
+            rotate(0deg);
+
+        opacity: 0;
+
+    }
+
+    8% {
+
+        opacity: 0.55;
+
+    }
+
+    50% {
+
+        transform:
+            translateX(50vw)
+            translateY(-8px)
+            rotate(0deg);
+
+        opacity: 0.7;
+
+    }
+
+    92% {
+
+        opacity: 0.55;
+
+    }
+
+    100% {
+
+        transform:
+            translateX(calc(100vw + 100px))
+            translateY(5px)
+            rotate(0deg);
+
+        opacity: 0;
+
+    }
+
+}
+
+
+/* =========================================
+   AIRCRAFT 2
+   RIGHT → LEFT
+========================================= */
+
+.aircraft-2 {
+
+    right: -80px;
+
+    top: 65px;
+
+    animation:
+        aircraftRightLeft
+        16s linear
+        infinite;
+
+    animation-delay:
+        2s;
+}
+
+
+@keyframes aircraftRightLeft {
+
+    0% {
+
+        transform:
+            translateX(100px)
+            translateY(0)
+            rotate(180deg);
+
+        opacity: 0;
+
+    }
+
+    8% {
+
+        opacity: 0.5;
+
+    }
+
+    50% {
+
+        transform:
+            translateX(-50vw)
+            translateY(12px)
+            rotate(180deg);
+
+        opacity: 0.65;
+
+    }
+
+    92% {
+
+        opacity: 0.5;
+
+    }
+
+    100% {
+
+        transform:
+            translateX(calc(-100vw - 100px))
+            translateY(-5px)
+            rotate(180deg);
+
+        opacity: 0;
+
+    }
+
+}
+
+
+/* =========================================
+   AIRCRAFT 3
+   TOP LEFT → BOTTOM RIGHT
+========================================= */
+
+.aircraft-3 {
+
+    left: 18%;
+
+    top: -70px;
+
+    animation:
+        aircraftDiagonalOne
+        14s linear
+        infinite;
+
+    animation-delay:
+        4s;
+}
+
+
+@keyframes aircraftDiagonalOne {
+
+    0% {
+
+        transform:
+            translate(-100px, -100px)
+            rotate(45deg);
+
+        opacity: 0;
+
+    }
+
+    10% {
+
+        opacity: 0.55;
+
+    }
+
+    50% {
+
+        transform:
+            translate(25vw, 90px)
+            rotate(45deg);
+
+        opacity: 0.65;
+
+    }
+
+    90% {
+
+        opacity: 0.5;
+
+    }
+
+    100% {
+
+        transform:
+            translate(65vw, 230px)
+            rotate(45deg);
+
+        opacity: 0;
+
+    }
+
+}
+
+
+/* =========================================
+   AIRCRAFT 4
+   BOTTOM LEFT → TOP RIGHT
+========================================= */
+
+.aircraft-4 {
+
+    left: -70px;
+
+    top: 140px;
+
+    animation:
+        aircraftDiagonalTwo
+        15s linear
+        infinite;
+
+    animation-delay:
+        6s;
+}
+
+
+@keyframes aircraftDiagonalTwo {
+
+    0% {
+
+        transform:
+            translate(-100px, 100px)
+            rotate(-45deg);
+
+        opacity: 0;
+
+    }
+
+    10% {
+
+        opacity: 0.45;
+
+    }
+
+    50% {
+
+        transform:
+            translate(40vw, -50px)
+            rotate(-45deg);
+
+        opacity: 0.6;
+
+    }
+
+    90% {
+
+        opacity: 0.45;
+
+    }
+
+    100% {
+
+        transform:
+            translate(100vw, -180px)
+            rotate(-45deg);
+
+        opacity: 0;
+
+    }
+
+}
+
+
+/* =========================================
+   AIRCRAFT 5
+   TOP RIGHT → BOTTOM LEFT
+========================================= */
+
+.aircraft-5 {
+
+    right: 15%;
+
+    top: -70px;
+
+    animation:
+        aircraftDiagonalThree
+        17s linear
+        infinite;
+
+    animation-delay:
+        8s;
+}
+
+
+@keyframes aircraftDiagonalThree {
+
+    0% {
+
+        transform:
+            translate(100px, -100px)
+            rotate(135deg);
+
+        opacity: 0;
+
+    }
+
+    10% {
+
+        opacity: 0.5;
+
+    }
+
+    50% {
+
+        transform:
+            translate(-25vw, 100px)
+            rotate(135deg);
+
+        opacity: 0.65;
+
+    }
+
+    90% {
+
+        opacity: 0.5;
+
+    }
+
+    100% {
+
+        transform:
+            translate(-70vw, 240px)
+            rotate(135deg);
+
+        opacity: 0;
+
+    }
+
+}
+
+
+/* =========================================
+   AIRCRAFT 6
+   BOTTOM RIGHT → TOP LEFT
+========================================= */
+
+.aircraft-6 {
+
+    right: -70px;
+
+    top: 145px;
+
+    animation:
+        aircraftDiagonalFour
+        18s linear
+        infinite;
+
+    animation-delay:
+        10s;
+}
+
+
+@keyframes aircraftDiagonalFour {
+
+    0% {
+
+        transform:
+            translate(100px, 100px)
+            rotate(-135deg);
+
+        opacity: 0;
+
+    }
+
+    10% {
+
+        opacity: 0.45;
+
+    }
+
+    50% {
+
+        transform:
+            translate(-40vw, -55px)
+            rotate(-135deg);
+
+        opacity: 0.6;
+
+    }
+
+    90% {
+
+        opacity: 0.45;
+
+    }
+
+    100% {
+
+        transform:
+            translate(-100vw, -190px)
+            rotate(-135deg);
+
+        opacity: 0;
+
+    }
+
+}
+
+
+/* =========================================
+   HEADER CONTENT
+========================================= */
+
+.header-content {
+
+    width: 100%;
+
+    min-height: 115px;
+
+    display: grid;
+
+    grid-template-columns:
+        160px
+        1fr
+        160px;
+
+    align-items: center;
+
+    padding:
+        5px 40px 15px 40px;
+
+    position: relative;
+
+    z-index: 10;
+}
+
+
+/* =========================================
+   TUDM LOGO
+========================================= */
+
+.airforce-logo {
+
+    width: 90px;
+
+    height: 90px;
+
+    object-fit: contain;
+
+    justify-self: start;
+}
+
+
+/* =========================================
+   HEADER TITLE
+========================================= */
+
+.header-title {
+
+    text-align: center;
+
+    padding:
+        0 30px;
+}
+
+
+.header-title h1 {
+
+    font-size: 27px;
+
+    font-weight: 700;
+
+    letter-spacing: 3px;
+
+    color:
+        #ffffff;
+}
+
+
+.header-title p {
+
+    margin-top: 6px;
+
+    font-size: 13px;
+
+    font-weight: 500;
+
+    letter-spacing: 2px;
+
+    color:
+        #55cfff;
+}
+
+
+/* =========================================
+   ATC LOGO
+========================================= */
+
+.atc-logo {
+
+    width: 90px;
+
+    height: 90px;
+
+    object-fit: contain;
+
+    justify-self: end;
+}
+
+
+/* =========================================
+   LOGIN BUTTON
+========================================= */
+
+.login-container {
+
+    position: absolute;
+
+    top: 10px;
+
+    right: 25px;
+
+    z-index: 200;
+}
+
+
+.login-button {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 6px;
+
+    width: 95px;
+
+    height: 30px;
+
+    background:
+        rgba(0, 145, 205, 0.15);
+
+    border:
+        1px solid rgba(0, 191, 255, 0.75);
+
+    border-radius: 5px;
+
+    color:
+        #65d9ff;
+
+    text-decoration: none;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+    transition:
+        all 0.3s ease;
+}
+
+
+.login-button:hover {
+
+    background:
+        #00bfff;
+
+    color:
+        #031522;
+
+    box-shadow:
+        0 0 15px rgba(0, 191, 255, 0.5);
+
+    transform:
+        translateY(-1px);
+}
+
+
+/* =========================================
+   NAVIGATION BAR
+========================================= */
+
+.navbar {
+
+    width: 100%;
+
+    height: 62px;
+
+    display: flex;
+
+    background:
+        rgba(4, 24, 39, 0.98);
+
+    border-bottom:
+        1px solid rgba(0, 191, 255, 0.25);
+
+    position: relative;
+
+    z-index: 150;
+}
+
+
+/* =========================================
+   NORMAL NAV ITEMS
+========================================= */
+
+.nav-item {
+
+    flex: 1;
+
+    height: 62px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color:
+        #d8f3ff;
+
+    text-decoration: none;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+    border-right:
+        1px solid rgba(255,255,255,0.08);
+
+    transition:
+        all 0.3s ease;
+
+    position: relative;
+}
+
+
+.nav-item:hover {
+
+    background:
+        rgba(0, 191, 255, 0.12);
+
+    color:
+        #55d8ff;
+
+    box-shadow:
+        inset 0 -3px 0 #00bfff;
+}
+
+
+/* =========================================
+   DROPDOWN
+========================================= */
+
+.dropdown {
+
+    flex: 1;
+
+    height: 62px;
+
+    position: relative;
+
+    border-right:
+        1px solid rgba(255,255,255,0.08);
+}
+
+
+.dropdown > .nav-item {
+
+    width: 100%;
+
+    height: 62px;
+
+    border-right: none;
+
+    flex: none;
+}
+
+
+.dropdown > .nav-item::after {
+
+    content:
+        "⌄";
+
+    margin-left:
+        8px;
+
+    font-size:
+        13px;
+
+    color:
+        #55cfff;
+
+    transition:
+        transform 0.3s ease;
+}
+
+
+.dropdown:hover > .nav-item::after {
+
+    transform:
+        rotate(180deg);
+}
+
+
+/* =========================================
+   DROPDOWN MENU
+========================================= */
+
+.dropdown-menu {
+
+    position: absolute;
+
+    top: 62px;
+
+    left: 0;
+
+    width: 100%;
+
+    min-width: 220px;
+
+    background:
+        rgba(5, 25, 40, 0.99);
+
+    border:
+        1px solid rgba(0, 190, 255, 0.35);
+
+    border-top:
+        2px solid #00bfff;
+
+    border-radius:
+        0 0 7px 7px;
+
+    box-shadow:
+        0 12px 30px rgba(0,0,0,0.55);
+
+    overflow-y:
+        auto;
+
+    max-height:
+        0;
+
+    opacity:
+        0;
+
+    visibility:
+        hidden;
+
+    transform:
+        translateY(-8px);
+
+    transition:
+        opacity 0.25s ease,
+        transform 0.25s ease,
+        max-height 0.35s ease,
+        visibility 0.25s ease;
+
+    z-index:
+        300;
+
+    scrollbar-width:
+        thin;
+
+    scrollbar-color:
+        #00bfff #071a2a;
+}
+
+
+.dropdown:hover .dropdown-menu {
+
+    max-height:
+        220px;
+
+    opacity:
+        1;
+
+    visibility:
+        visible;
+
+    transform:
+        translateY(0);
+}
+
+
+.dropdown-menu a {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    min-height:
+        52px;
+
+    padding:
+        0 18px;
+
+    color:
+        #dcefff;
+
+    text-decoration:
+        none;
+
+    font-size:
+        13px;
+
+    font-weight:
+        600;
+
+    letter-spacing:
+        0.8px;
+
+    border-bottom:
+        1px solid rgba(255,255,255,0.06);
+
+    transition:
+        all 0.25s ease;
+
+    position:
+        relative;
+}
+
+
+.dropdown-menu a:hover {
+
+    background:
+        rgba(0, 191, 255, 0.13);
+
+    color:
+        #55d8ff;
+
+    padding-left:
+        25px;
+}
+
+
+.dropdown-menu a::before {
+
+    content:
+        "▸";
+
+    color:
+        #00bfff;
+
+    margin-right:
+        10px;
+
+    font-size:
+        10px;
+}
+
+
+/* =========================================
+   MAIN
+========================================= */
+
+.main {
+
+    width: 100%;
+
+    padding:
+        25px 35px 40px;
+}
+
+
+/* =========================================
+   NEWS SLIDER
+========================================= */
+
+.slider {
+
+    width: 100%;
+
+    height: 390px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    border:
+        1px solid rgba(0,191,255,0.35);
+
+    border-radius:
+        8px;
+
+    background:
+        #041522;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,0.45);
+
+    cursor:
+        grab;
+}
+
+
+.slider:active {
+
+    cursor:
+        grabbing;
+}
+
+
+.slides {
+
+    display:
+        flex;
+
+    width:
+        100%;
+
+    height:
+        100%;
+
+    transition:
+        transform 0.6s ease;
+}
+
+
+.slide {
+
+    min-width:
+        100%;
+
+    height:
+        100%;
+
+    position:
+        relative;
+
+    user-select:
+        none;
+}
+
+
+.slide img {
+
+    width:
+        100%;
+
+    height:
+        100%;
+
+    object-fit:
+        cover;
+
+    opacity:
+        0.55;
+}
+
+
+/* =========================================
+   SLIDE OVERLAY
+========================================= */
+
+.slide::after {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    inset:
+        0;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0,0,0,0.82),
+            rgba(0,0,0,0.25),
+            rgba(0,0,0,0.65)
+        );
+}
+
+
+/* =========================================
+   SLIDE CONTENT
+========================================= */
+
+.slide-content {
+
+    position:
+        absolute;
+
+    z-index:
+        5;
+
+    left:
+        50px;
+
+    bottom:
+        55px;
+
+    max-width:
+        700px;
+}
+
+
+.slide-content h2 {
+
+    font-size:
+        30px;
+
+    line-height:
+        1.2;
+
+    color:
+        #ffffff;
+
+    margin-bottom:
+        12px;
+
+    text-shadow:
+        0 2px 8px rgba(0,0,0,0.7);
+}
+
+
+.slide-content p {
+
+    font-size:
+        14px;
+
+    color:
+        #cdefff;
+
+    line-height:
+        1.6;
+}
+
+
+.read-more {
+
+    display:
+        inline-block;
+
+    margin-top:
+        15px;
+
+    padding:
+        9px 18px;
+
+    background:
+        rgba(0,191,255,0.15);
+
+    border:
+        1px solid #00bfff;
+
+    border-radius:
+        4px;
+
+    color:
+        #55d8ff;
+
+    text-decoration:
+        none;
+
+    font-size:
+        12px;
+
+    font-weight:
+        700;
+
+    transition:
+        all 0.3s ease;
+}
+
+
+.read-more:hover {
+
+    background:
+        #00bfff;
+
+    color:
+        #031522;
+}
+
+
+/* =========================================
+   SLIDER DOTS
+========================================= */
+
+.slider-dots {
+
+    position:
+        absolute;
+
+    bottom:
+        15px;
+
+    left:
+        50%;
+
+    transform:
+        translateX(-50%);
+
+    display:
+        flex;
+
+    gap:
+        8px;
+
+    z-index:
+        10;
+}
+
+
+.dot {
+
+    width:
+        9px;
+
+    height:
+        9px;
+
+    border-radius:
+        50%;
+
+    border:
+        1px solid #55d8ff;
+
+    background:
+        transparent;
+
+    cursor:
+        pointer;
+
+    transition:
+        all 0.3s ease;
+
+    padding:
+        0;
+}
+
+
+.dot.active {
+
+    background:
+        #00bfff;
+
+    box-shadow:
+        0 0 8px rgba(0,191,255,0.7);
+}
+
+
+/* =========================================
+   STATIC ARTICLES
+========================================= */
+
+.article-grid {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(5, 1fr);
+
+    gap:
+        18px;
+
+    margin-top:
+        25px;
+}
+
+
+.article-card {
+
+    min-height:
+        170px;
+
+    padding:
+        22px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(7,37,57,0.95),
+            rgba(3,22,36,0.95)
+        );
+
+    border:
+        1px solid rgba(0,191,255,0.25);
+
+    border-radius:
+        7px;
+
+    transition:
+        all 0.3s ease;
+
+    position:
+        relative;
+
+    overflow:
+        hidden;
+}
+
+
+.article-card::before {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    left:
+        0;
+
+    top:
+        0;
+
+    width:
+        3px;
+
+    height:
+        100%;
+
+    background:
+        #00bfff;
+}
+
+
+.article-card:hover {
+
+    transform:
+        translateY(-5px);
+
+    border-color:
+        rgba(0,191,255,0.65);
+
+    box-shadow:
+        0 10px 25px rgba(0,0,0,0.4);
+}
+
+
+.article-card h3 {
+
+    color:
+        #55d8ff;
+
+    font-size:
+        16px;
+
+    margin-bottom:
+        12px;
+}
+
+
+.article-card p {
+
+    color:
+        #b9d7e5;
+
+    font-size:
+        12px;
+
+    line-height:
+        1.6;
+}
+
+
+.article-link {
+
+    display:
+        inline-block;
+
+    margin-top:
+        12px;
+
+    color:
+        #55d8ff;
+
+    text-decoration:
+        none;
+
+    font-size:
+        11px;
+
+    font-weight:
+        700;
+}
+
+
+/* =========================================
+   LEADERSHIP / KEY PERSONNEL
+========================================= */
+
+.personnel-section {
+
+    width:
+        100%;
+
+    max-width:
+        1000px;
+
+    margin:
+        50px auto 20px;
+
+    text-align:
+        center;
+}
+
+
+.personnel-title {
+
+    font-size:
+        20px;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        2px;
+
+    color:
+        #55d8ff;
+
+    margin-bottom:
+        8px;
+}
+
+
+.personnel-subtitle {
+
+    font-size:
+        12px;
+
+    color:
+        #7fa9ba;
+
+    letter-spacing:
+        1px;
+
+    margin-bottom:
+        30px;
+}
+
+
+.person-card {
+
+    width:
+        100%;
+
+    margin-bottom:
+        30px;
+
+    padding:
+        25px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(7,37,57,0.95),
+            rgba(3,22,36,0.95)
+        );
+
+    border:
+        1px solid rgba(0,191,255,0.28);
+
+    border-radius:
+        8px;
+
+    position:
+        relative;
+
+    overflow:
+        hidden;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,0.35);
+
+    transition:
+        all 0.35s ease;
+}
+
+
+.person-card::before {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    left:
+        0;
+
+    top:
+        0;
+
+    width:
+        4px;
+
+    height:
+        100%;
+
+    background:
+        #00bfff;
+}
+
+
+.person-card:hover {
+
+    border-color:
+        rgba(0,191,255,0.65);
+
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 15px 35px rgba(0,0,0,0.45);
+}
+
+
+.person-image {
+
+    width:
+        100%;
+
+    height:
+        480px;
+
+    display:
+        flex;
+
+    justify-content:
+        center;
+
+    align-items:
+        center;
+
+    overflow:
+        hidden;
+
+    border:
+        1px solid rgba(0,191,255,0.25);
+
+    border-radius:
+        6px;
+
+    background:
+        #041522;
+}
+
+
+.person-image img {
+
+    width:
+        100%;
+
+    height:
+        100%;
+
+    object-fit:
+        contain;
+
+    display:
+        block;
+
+    transition:
+        transform 0.5s ease;
+}
+
+
+.person-card:hover .person-image img {
+
+    transform:
+        scale(1.02);
+}
+
+
+.person-info {
+
+    padding-top:
+        20px;
+
+    text-align:
+        center;
+}
+
+
+.person-info h3 {
+
+    font-size:
+        18px;
+
+    color:
+        #ffffff;
+
+    letter-spacing:
+        0.5px;
+
+    line-height:
+        1.5;
+
+    margin-bottom:
+        7px;
+}
+
+
+.person-info p {
+
+    font-size:
+        12px;
+
+    color:
+        #55d8ff;
+
+    letter-spacing:
+        1px;
+
+    margin:
+        0;
+
+    text-align:
+        center;
+}
+
+
+.person-divider {
+
+    width:
+        55px;
+
+    height:
+        2px;
+
+    background:
+        #00bfff;
+
+    margin:
+        12px auto 0;
+
+    box-shadow:
+        0 0 8px rgba(0,191,255,0.5);
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.footer {
+
+    text-align:
+        center;
+
+    padding:
+        20px;
+
+    color:
+        #6f9aaa;
+
+    font-size:
+        11px;
+
+    border-top:
+        1px solid rgba(0,191,255,0.15);
+
+    background:
+        rgba(2,13,22,0.8);
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 1000px) {
+
+    .article-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .navbar {
+
+        flex-wrap:
+            wrap;
+
+        height:
+            auto;
+    }
+
+    .nav-item,
+    .dropdown {
+
+        min-width:
+            20%;
+    }
+
+}
+
+
+@media (max-width: 700px) {
+
+    .header {
+
+        min-height:
+            175px;
+
+        padding-top:
+            45px;
+    }
+
+
+    .header-content {
+
+        grid-template-columns:
+            90px 1fr 90px;
+
+        padding:
+            5px 15px 15px;
+    }
+
+
+    .airforce-logo,
+    .atc-logo {
+
+        width:
+            65px;
+
+        height:
+            65px;
+    }
+
+
+    .header-title {
+
+        padding:
+            0 10px;
+    }
+
+
+    .header-title h1 {
+
+        font-size:
+            18px;
+
+        letter-spacing:
+            1.5px;
+    }
+
+
+    .header-title p {
+
+        font-size:
+            9px;
+
+        letter-spacing:
+            1px;
+    }
+
+
+    .login-container {
+
+        top:
+            8px;
+
+        right:
+            15px;
+    }
+
+
+    .navbar {
+
+        height:
+            auto;
+
+        flex-wrap:
+            wrap;
+    }
+
+
+    .nav-item,
+    .dropdown {
+
+        flex:
+            1 1 50%;
+
+        min-width:
+            50%;
+    }
+
+
+    .main {
+
+        padding:
+            15px;
+    }
+
+
+    .slider {
+
+        height:
+            300px;
+    }
+
+
+    .slide-content {
+
+        left:
+            25px;
+
+        right:
+            25px;
+
+        bottom:
+            45px;
+    }
+
+
+    .slide-content h2 {
+
+        font-size:
+            22px;
+    }
+
+
+    .article-grid {
+
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .personnel-section {
+
+        margin-top:
+            35px;
+    }
+
+
+    .person-image {
+
+        height:
+            360px;
+    }
+
+
+    .person-card {
+
+        padding:
+            15px;
+    }
+
+
+    .person-info h3 {
+
+        font-size:
+            15px;
+    }
+
+
+    /* Smaller aircraft on mobile */
+
+    .aircraft {
+
+        font-size:
+            22px;
+
+        width:
+            40px;
+
+        height:
+            40px;
+    }
+
+}
+
+
+@media (max-width: 500px) {
+
+    .person-image {
+
+        height:
+            300px;
+    }
+
+
+    .person-info h3 {
+
+        font-size:
+            14px;
+    }
+
+
+    .aircraft {
+
+        font-size:
+            18px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================
+     HEADER
+========================================= -->
+
+<header class="header">
+
+
+    <!-- =====================================
+         MOVING AIRCRAFT
+         ONLY INSIDE HEADER
+    ====================================== -->
+
+    <div class="aircraft-layer">
+
+
+        <!-- AIRCRAFT 1 -->
+
+        <div class="aircraft aircraft-1">
+            ✈
+        </div>
+
+
+        <!-- AIRCRAFT 2 -->
+
+        <div class="aircraft aircraft-2">
+            ✈
+        </div>
+
+
+        <!-- AIRCRAFT 3 -->
+
+        <div class="aircraft aircraft-3">
+            ✈
+        </div>
+
+
+        <!-- AIRCRAFT 4 -->
+
+        <div class="aircraft aircraft-4">
+            ✈
+        </div>
+
+
+        <!-- AIRCRAFT 5 -->
+
+        <div class="aircraft aircraft-5">
+            ✈
+        </div>
+
+
+        <!-- AIRCRAFT 6 -->
+
+        <div class="aircraft aircraft-6">
+            ✈
+        </div>
+
+
+    </div>
+
+
+    <!-- =====================================
+         LOGIN
+    ====================================== -->
+
+    <div class="login-container">
+
+        <a
+            href="login.html"
+            class="login-button"
+        >
+            🔐 LOGIN
+        </a>
+
+    </div>
+
+
+    <!-- =====================================
+         HEADER CONTENT
+    ====================================== -->
+
+    <div class="header-content">
+
+
+        <!-- TUDM LOGO -->
+
+        <img
+            src="logo_tudm.png"
+            alt="Air Force Logo"
+            class="airforce-logo"
+        >
+
+
+        <!-- TITLE -->
+
+        <div class="header-title">
+
+            <h1>
+                AIR TRAFFIC CONTROL
+            </h1>
+
+            <p>
+                AIR TRAFFIC CONTROL INFORMATION PORTAL
+            </p>
+
+        </div>
+
+
+        <!-- ATC LOGO -->
+
+        <img
+            src="logo_atc.png"
+            alt="ATC Logo"
+            class="atc-logo"
+        >
+
+    </div>
+
+</header>
+
+
+<!-- =========================================
+     NAVIGATION
+========================================= -->
+
+<nav class="navbar">
+
+
+    <!-- CARTA ORGANISASI -->
+
+    <div class="dropdown">
+
+        <a
+            href="#"
+            class="nav-item"
+        >
+            CARTA ORGANISASI
+        </a>
+
+
+        <div class="dropdown-menu">
+
+            <a href="#">JAMCC</a>
+
+            <a href="subang_org_chart.html">PU SUBANG</a>
+
+            <a href="#">PU KUANTAN</a>
+
+            <a href="#">PU BUTTERWORTH</a>
+
+            <a href="#">PU LABUAN</a>
+
+            <a href="#">KTU</a>
+
+            <a href="#">PU KUCHING</a>
+
+            <a href="#">KD RAJAWALI</a>
+
+            <a href="#">STESEN UDARA TIMUR</a>
+
+            <a href="#">SKTU</a>
+
+            <a href="#">SK KOM</a>
+
+        </div>
+
+    </div>
+
+
+    <!-- SEJARAH -->
+
+    <div class="dropdown">
+
+        <a
+            href="#"
+            class="nav-item"
+        >
+            SEJARAH
+        </a>
+
+
+        <div class="dropdown-menu">
+
+            <a href="#">JAMCC</a>
+
+            <a href="#">PU SUBANG</a>
+
+            <a href="#">PU KUANTAN</a>
+
+            <a href="#">PU BUTTERWORTH</a>
+
+            <a href="#">PU LABUAN</a>
+
+            <a href="#">KOLEJ TENTERA UDARA</a>
+
+            <a href="#">PU KUCHING</a>
+
+            <a href="#">KD RAJAWALI</a>
+
+            <a href="#">STESEN UDARA TIMUR</a>
+
+            <a href="#">SKTU</a>
+
+            <a href="#">SK KOM</a>
+
+        </div>
+
+    </div>
+
+
+    <!-- BERITA -->
+
+    <a
+        href="berita_kllu.html"
+        class="nav-item"
+    >
+        BERITA
+    </a>
+
+
+    <!-- DOKUMEN -->
+
+    <div class="dropdown">
+
+        <a
+            href="#"
+            class="nav-item"
+        >
+            DOKUMEN
+        </a>
+
+
+        <div class="dropdown-menu">
+
+            <a href="https://aip.caam.gov.my/aip/eAIP/2026-08-11/html/eAIP/WM-AD-2.WMSA-en-MS.html#AD-2.WMSA">
+                PU SUBANG
+            </a>
+
+            <a href="https://aip.caam.gov.my/aip/eAIP/2026-08-11/html/eAIP/WM-AD-2.WMKD-en-MS.html#AD-2.WMKD">
+                PU KUANTAN
+            </a>
+
+            <a href="https://aip.caam.gov.my/aip/eAIP/2026-08-11/html/eAIP/WM-AD-2.WMKB-en-MS.html#AD-2.WMKB">
+                PU BUTTERWORTH
+            </a>
+
+            <a href="https://aip.caam.gov.my/aip/eAIP/2026-08-11/html/eAIP/WM-AD-2.WMKA-en-MS.html#AD-2.WMKA">
+                KOLEJ TENTERA UDARA
+            </a>
+
+            <a href="https://aip.caam.gov.my/aip/eAIP/2026-08-11/html/eAIP/WM-AD-2.WMGK-en-MS.html#AD-2.WMGK">
+                PU GONG KEDAK
+            </a>
+
+            <a href="https://aip.caam.gov.my/aip/eAIP/2026-08-11/html/eAIP/WM-AD-2.WBKL-en-MS.html#AD-2.WBKL">
+                PU LABUAN
+            </a>
+
+            <a href="https://aip.caam.gov.my/aip/eAIP/2026-08-11/html/eAIP/WM-AD-2.WBGG-en-MS.html#AD-2.WBGG">
+                PU KUCHING
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- LATIHAN -->
+
+    <a
+        href="#"
+        class="nav-item"
+    >
+        LATIHAN
+    </a>
+	
+	   <!-- PAUTAN LUAR -->
+	
+	
+	 <div class="dropdown">
+
+        <a
+            href="#"
+            class="nav-item"
+        >
+            PAUTAN LUAR
+        </a>
+
+
+        <div class="dropdown-menu">
+
+            <a href="https://eclipse.caam.gov.my/ELICENSING/common/login.jsp">ECLIPSE</a>
+
+        </div>
+
+    </div>
+
+
+</nav>
+
+
+<!-- =========================================
+     MAIN
+========================================= -->
+
+<main class="main">
+
+
+    <!-- =====================================
+         NEWS SLIDER
+    ====================================== -->
+
+    <section
+        class="slider"
+        id="slider"
+    >
+
+        <div
+            class="slides"
+            id="slides"
+        >
+
+
+            <!-- SLIDE 1 -->
+
+            <div class="slide">
+
+                <img
+                    src="mesyuarat-panel-kllu-5-26.jpg"
+                    alt="Mesyuarat Panel Tred KLLU Siri 5/26"
+                >
+
+                <div class="slide-content">
+
+                    <h2>
+                        MESYUARAT PANEL TRED KAWALAN LALU LINTAS UDARA (KLLU) SIRI 5/26
+                    </h2>
+
+                    <p>
+                        Mesyuarat Panel Tred Kawalan Lalu Lintas Udara
+                        bagi membincangkan perkara berkaitan pembangunan,
+                        keperluan operasi serta peningkatan profesionalisme warga KLLU.
+                    </p>
+
+                    <a
+                        href="news-mesyuarat-panel-kllu-5-26.html"
+                        class="read-more"
+                    >
+                        BACA SELANJUTNYA
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- SLIDE 2 -->
+
+            <div class="slide">
+
+                <img
+                    src="dialog-kllu-trade-master.jpg"
+                    alt="Dialog KLLU Trade Master ATC"
+                >
+
+                <div class="slide-content">
+
+                    <h2>
+                        DIALOG PEGAWAI KLLU BERSAMA TRADE MASTER KLLU
+                    </h2>
+
+                    <p>
+                        Sesi dialog dan perkongsian berkaitan
+                        Trade Master Air Traffic Control.
+                    </p>
+
+                    <a
+                        href="news-dialog-kllu-trade-master.html"
+                        class="read-more"
+                    >
+                        BACA SELANJUTNYA
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- SLIDE 3 -->
+
+            <div class="slide">
+							
+                <img
+                    src="kllu-siri-2-2026.jpg"
+                    alt="KLLU Siri 2 2026"
+                >
+
+                <div class="slide-content">
+
+                    <h2>
+                        MESYUARAT KLLU SIRI 2 TAHUN 2026
+                    </h2>
+
+                    <p>
+                        Program dan aktiviti Air Traffic Control
+                        bagi memperkukuhkan profesionalisme serta
+                        kecekapan warga ATC.
+                    </p>
+
+                    <a
+                        href="news-kllu-siri-2-2026.html"
+                        class="read-more"
+                    >
+                        BACA SELANJUTNYA
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- SLIDE 4 -->
+
+            <div class="slide">
+
+                <img
+                    src="safety.jpg"
+                    alt="ATC Safety"
+                >
+
+                <div class="slide-content">
+
+                    <h2>
+                        KESELAMATAN DAN OPERASI
+                    </h2>
+
+                    <p>
+                        Maklumat berkaitan keselamatan,
+                        operasi dan komunikasi Air Traffic Control.
+                    </p>
+
+                    <a
+                        href="#"
+                        class="read-more"
+                    >
+                        BACA SELANJUTNYA
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- SLIDE 5 -->
+
+            <div class="slide">
+
+                <img
+                    src="announcement.jpg"
+                    alt="Official Announcement"
+                >
+
+                <div class="slide-content">
+
+                    <h2>
+                        PENGUMUMAN RASMI
+                    </h2>
+
+                    <p>
+                        Pengumuman dan maklumat rasmi
+                        Air Traffic Control.
+                    </p>
+
+                    <a
+                        href="#"
+                        class="read-more"
+                    >
+                        BACA SELANJUTNYA
+                    </a>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- DOTS -->
+
+        <div class="slider-dots">
+
+            <button
+                class="dot active"
+                data-slide="0"
+            ></button>
+
+            <button
+                class="dot"
+                data-slide="1"
+            ></button>
+
+            <button
+                class="dot"
+                data-slide="2"
+            ></button>
+
+            <button
+                class="dot"
+                data-slide="3"
+            ></button>
+
+            <button
+                class="dot"
+                data-slide="4"
+            ></button>
+
+        </div>
+
+
+    </section>
+
+
+    <!-- =====================================
+         STATIC ARTICLE BOXES
+    ====================================== -->
+
+    <section class="article-grid">
+
+
+        <div class="article-card">
+
+            <h3>
+                CARTA ORGANISASI
+            </h3>
+
+            <p>
+                Maklumat berkaitan struktur organisasi
+                Air Traffic Control.
+            </p>
+
+            <a
+                href="#"
+                class="article-link"
+            >
+                LIHAT MAKLUMAT →
+            </a>
+
+        </div>
+
+
+        <div class="article-card">
+
+            <h3>
+                SEJARAH ATC
+            </h3>
+
+            <p>
+                Sejarah perkembangan Air Traffic Control
+                dan organisasi berkaitan.
+            </p>
+
+            <a
+                href="#"
+                class="article-link"
+            >
+                LIHAT SEJARAH →
+            </a>
+
+        </div>
+
+
+        <div class="article-card">
+
+            <h3>
+                BERITA
+            </h3>
+
+            <p>
+                Berita dan perkembangan terkini
+                Air Traffic Control.
+            </p>
+
+            <a
+                href="#"
+                class="article-link"
+            >
+                LIHAT BERITA →
+            </a>
+
+        </div>
+
+
+        <div class="article-card">
+
+            <h3>
+                DOKUMEN
+            </h3>
+
+            <p>
+                Akses kepada dokumen dan bahan
+                rujukan Air Traffic Control.
+            </p>
+
+            <a
+                href="#"
+                class="article-link"
+            >
+                LIHAT DOKUMEN →
+            </a>
+
+        </div>
+
+
+        <div class="article-card">
+
+            <h3>
+                LATIHAN
+            </h3>
+
+            <p>
+                Maklumat berkaitan latihan,
+                kursus dan pembangunan kompetensi.
+            </p>
+
+            <a
+                href="#"
+                class="article-link"
+            >
+                LIHAT LATIHAN →
+            </a>
+
+        </div>
+
+
+    </section>
+
+
+    <!-- =====================================
+         LEADERSHIP
+    ====================================== -->
+
+    <section class="personnel-section">
+
+
+        <div class="person-card">
+
+            <div class="person-image">
+
+                <img
+                    src="ptu_tudm.jfif"
+                    alt="PTU TUDM Jeneral Tan Sri Dato' Sri Haji Muhamad Norazlan bin Aris TUDM"
+                >
+
+            </div>
+
+
+            <div class="person-info">
+
+                <h3>
+                    Jeneral Tan Sri Dato' Sri Haji Muhamad Norazlan bin Aris TUDM
+                </h3>
+
+                <p>
+                    PANGLIMA TENTERA UDARA DIRAJA MALAYSIA
+                </p>
+
+                <div class="person-divider"></div>
+
+            </div>
+
+        </div>
+
+
+        <div class="person-card">
+
+            <div class="person-image">
+
+                <img
+                    src="tm_atc.jpeg"
+                    alt="Trade Master KLLU Brig Jen Mohd Shahfreen bin Baba TUDM"
+                >
+
+            </div>
+
+
+            <div class="person-info">
+
+                <h3>
+                    Brig Jen Mohd Shahfreen bin Baba TUDM
+                </h3>
+
+                <p>
+                    KOMANDER JOINT AIRSPACE MANAGEMENT COORDINATION CENTER
+                </p>
+
+                <div class="person-divider"></div>
+
+            </div>
+
+        </div>
+
+
+        <div class="personnel-title">
+            VISI TRED KLLU
+        </div>
+
+        <div class="personnel-subtitle">
+            KAWALAN TRAFIK UDARA DAN KOMUNIKASI YANG KREDIBEL SERTA BERWIBAWA
+        </div>
+
+
+        <div class="personnel-title">
+            MISI TRED KLLU
+        </div>
+
+        <div class="personnel-subtitle">
+
+            UNTUK MENERAJUI PERKHIDMATAN KAWALAN TRAFIK UDARA DAN KOMUNIKASI DENGAN KREDIBEL
+            <br>
+            MELALUI SISTEM YANG EFEKTIF SERTA MODAL INSAN PROFESIONAL
+
+        </div>
+
+
+    </section>
+
+
+</main>
+
+
+<!-- =========================================
+     FOOTER
+========================================= -->
+
+<footer class="footer">
+
+    Air Traffic Control Information Portal © 2026
+
+</footer>
+
+
+<!-- =========================================
+     JAVASCRIPT
+========================================= -->
+
+<script>
+
+const slides =
+    document.getElementById("slides");
+
+const dots =
+    document.querySelectorAll(".dot");
+
+const slider =
+    document.getElementById("slider");
+
+
+let currentSlide = 0;
+
+
+/* =========================================
+   TOTAL SLIDES
+========================================= */
+
+const totalSlides = 5;
+
+let autoSlide;
+
+
+/* =========================================
+   SHOW SLIDE
+========================================= */
+
+function showSlide(index) {
+
+    if (index >= totalSlides) {
+
+        currentSlide = 0;
+
+    }
+
+    else if (index < 0) {
+
+        currentSlide =
+            totalSlides - 1;
+
+    }
+
+    else {
+
+        currentSlide =
+            index;
+
+    }
+
+
+    slides.style.transform =
+        `translateX(-${currentSlide * 100}%)`;
+
+
+    dots.forEach((dot, i) => {
+
+        dot.classList.toggle(
+            "active",
+            i === currentSlide
+        );
+
+    });
+
+}
+
+
+/* =========================================
+   NEXT SLIDE
+========================================= */
+
+function nextSlide() {
+
+    showSlide(
+        currentSlide + 1
+    );
+
+}
+
+
+/* =========================================
+   AUTO SLIDE
+========================================= */
+
+function startAutoSlide() {
+
+    autoSlide =
+        setInterval(
+            nextSlide,
+            6000
+        );
+
+}
+
+
+function resetAutoSlide() {
+
+    clearInterval(autoSlide);
+
+    startAutoSlide();
+
+}
+
+
+/* =========================================
+   DOT CLICK
+========================================= */
+
+dots.forEach((dot) => {
+
+    dot.addEventListener(
+        "click",
+        function() {
+
+            const index =
+                parseInt(
+                    this.dataset.slide
+                );
+
+            showSlide(index);
+
+            resetAutoSlide();
+
+        }
+    );
+
+});
+
+
+/* =========================================
+   MOUSE DRAG
+========================================= */
+
+let startX = 0;
+
+let isDragging = false;
+
+
+slider.addEventListener(
+    "mousedown",
+    function(event) {
+
+        startX =
+            event.clientX;
+
+        isDragging =
+            true;
+
+    }
+);
+
+
+slider.addEventListener(
+    "mouseup",
+    function(event) {
+
+        if (!isDragging)
+            return;
+
+
+        const endX =
+            event.clientX;
+
+        const difference =
+            startX - endX;
+
+
+        if (Math.abs(difference) > 50) {
+
+            if (difference > 0) {
+
+                nextSlide();
+
+            }
+
+            else {
+
+                showSlide(
+                    currentSlide - 1
+                );
+
+            }
+
+            resetAutoSlide();
+
+        }
+
+
+        isDragging =
+            false;
+
+    }
+);
+
+
+slider.addEventListener(
+    "mouseleave",
+    function() {
+
+        isDragging =
+            false;
+
+    }
+);
+
+
+/* =========================================
+   TOUCH SWIPE
+========================================= */
+
+let touchStartX = 0;
+
+
+slider.addEventListener(
+    "touchstart",
+    function(event) {
+
+        touchStartX =
+            event.touches[0].clientX;
+
+    },
+    {
+        passive: true
+    }
+);
+
+
+slider.addEventListener(
+    "touchend",
+    function(event) {
+
+        const touchEndX =
+            event.changedTouches[0].clientX;
+
+        const difference =
+            touchStartX - touchEndX;
+
+
+        if (Math.abs(difference) > 50) {
+
+            if (difference > 0) {
+
+                nextSlide();
+
+            }
+
+            else {
+
+                showSlide(
+                    currentSlide - 1
+                );
+
+            }
+
+            resetAutoSlide();
+
+        }
+
+    }
+);
+
+
+/* =========================================
+   START
+========================================= */
+
+showSlide(0);
+
+startAutoSlide();
+
+</script>
+
+
+</body>
+
+</html>

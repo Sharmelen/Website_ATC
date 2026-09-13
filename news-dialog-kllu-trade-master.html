@@ -1,0 +1,1303 @@
+<!DOCTYPE html>
+<html lang="ms">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Dialog Pegawai KLLU dan Anggota PKTU Bersama Trade Master KLLU</title>
+
+<style>
+
+/* =========================================
+   GLOBAL
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+
+    background:
+        radial-gradient(
+            circle at 50% 10%,
+            rgba(0, 120, 180, 0.16),
+            transparent 40%
+        ),
+        linear-gradient(
+            135deg,
+            #020b13,
+            #061a29,
+            #03111c
+        );
+
+    color: #ffffff;
+
+    min-height: 100vh;
+
+    overflow-x: hidden;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.header {
+
+    width: 100%;
+
+    background:
+        rgba(3, 17, 29, 0.98);
+
+    border-bottom:
+        1px solid rgba(0, 191, 255, 0.25);
+
+    box-shadow:
+        0 4px 25px rgba(0, 0, 0, 0.45);
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 100;
+}
+
+
+.header-inner {
+
+    max-width: 1400px;
+
+    margin: auto;
+
+    min-height: 85px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding:
+        12px 30px;
+}
+
+
+/* =========================================
+   LOGO
+========================================= */
+
+.logo-area {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+}
+
+
+.logo-area img {
+
+    width: 55px;
+
+    height: 55px;
+
+    object-fit: contain;
+}
+
+
+.logo-text {
+
+    display: flex;
+
+    flex-direction: column;
+}
+
+
+.logo-text h2 {
+
+    font-size: 16px;
+
+    letter-spacing: 2px;
+
+    color: #ffffff;
+}
+
+
+.logo-text span {
+
+    font-size: 10px;
+
+    letter-spacing: 1.5px;
+
+    color: #55d8ff;
+
+    margin-top: 3px;
+}
+
+
+/* =========================================
+   BACK BUTTON
+========================================= */
+
+.back-button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    padding:
+        9px 17px;
+
+    border:
+        1px solid rgba(0, 191, 255, 0.65);
+
+    border-radius: 5px;
+
+    color:
+        #55d8ff;
+
+    text-decoration: none;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.8px;
+
+    background:
+        rgba(0, 145, 205, 0.12);
+
+    transition:
+        all 0.3s ease;
+}
+
+
+.back-button:hover {
+
+    background:
+        #00bfff;
+
+    color:
+        #031522;
+
+    box-shadow:
+        0 0 15px rgba(0,191,255,0.45);
+
+    transform:
+        translateY(-1px);
+}
+
+
+/* =========================================
+   ARTICLE CONTAINER
+========================================= */
+
+.article-wrapper {
+
+    width: 100%;
+
+    max-width: 1150px;
+
+    margin:
+        45px auto 70px;
+
+    padding:
+        0 25px;
+}
+
+
+/* =========================================
+   ARTICLE HEADER
+========================================= */
+
+.article-header {
+
+    text-align: center;
+
+    margin-bottom: 35px;
+}
+
+
+.article-category {
+
+    display: inline-block;
+
+    padding:
+        6px 14px;
+
+    border:
+        1px solid rgba(0,191,255,0.45);
+
+    border-radius: 20px;
+
+    color:
+        #55d8ff;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    letter-spacing: 1.5px;
+
+    background:
+        rgba(0,191,255,0.08);
+
+    margin-bottom: 18px;
+}
+
+
+.article-header h1 {
+
+    font-size: 36px;
+
+    line-height: 1.3;
+
+    letter-spacing: 0.8px;
+
+    color:
+        #ffffff;
+
+    max-width: 1050px;
+
+    margin:
+        auto;
+}
+
+
+.article-header h1::after {
+
+    content:
+        "";
+
+    display:
+        block;
+
+    width: 80px;
+
+    height: 3px;
+
+    background:
+        #00bfff;
+
+    margin:
+        20px auto 18px;
+
+    border-radius: 5px;
+
+    box-shadow:
+        0 0 10px rgba(0,191,255,0.6);
+}
+
+
+.article-meta {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 20px;
+
+    flex-wrap: wrap;
+
+    color:
+        #8fb8c9;
+
+    font-size: 12px;
+}
+
+
+.article-meta span {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 5px;
+}
+
+
+/* =========================================
+   HERO IMAGE - PHOTO 1
+========================================= */
+
+.hero-image {
+
+    width: 100%;
+
+    height: 500px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    border-radius: 10px;
+
+    border:
+        1px solid rgba(0,191,255,0.35);
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,0.5);
+
+    margin-bottom: 12px;
+}
+
+
+.hero-image img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    transition:
+        transform 0.7s ease;
+}
+
+
+.hero-image:hover img {
+
+    transform:
+        scale(1.03);
+}
+
+
+.hero-overlay {
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(0,0,0,0.05),
+            rgba(0,0,0,0.55)
+        );
+
+    pointer-events: none;
+}
+
+
+.image-caption {
+
+    color:
+        #759aaa;
+
+    font-size: 10px;
+
+    text-align: center;
+
+    margin-bottom: 40px;
+
+    letter-spacing: 0.4px;
+}
+
+
+/* =========================================
+   ARTICLE BODY
+========================================= */
+
+.article-body {
+
+    max-width: 950px;
+
+    margin:
+        auto;
+}
+
+
+/* =========================================
+   INTRODUCTION
+========================================= */
+
+.article-intro {
+
+    font-size: 17px;
+
+    line-height: 1.9;
+
+    color:
+        #dceff7;
+
+    margin-bottom: 28px;
+
+    padding:
+        25px 30px;
+
+    border-left:
+        4px solid #00bfff;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0,191,255,0.09),
+            rgba(0,191,255,0.02)
+        );
+
+    border-radius:
+        0 7px 7px 0;
+}
+
+
+/* =========================================
+   NORMAL PARAGRAPH
+========================================= */
+
+.article-body p {
+
+    font-size: 15px;
+
+    line-height: 1.9;
+
+    color:
+        #c2dce7;
+
+    margin-bottom: 25px;
+
+    text-align: justify;
+}
+
+
+/* =========================================
+   SECTION TITLE
+========================================= */
+
+.section-title {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin:
+        45px 0 20px;
+
+    color:
+        #55d8ff;
+
+    font-size: 19px;
+
+    letter-spacing: 0.5px;
+}
+
+
+.section-title::before {
+
+    content:
+        "";
+
+    width: 5px;
+
+    height: 25px;
+
+    background:
+        #00bfff;
+
+    border-radius: 4px;
+
+    box-shadow:
+        0 0 10px rgba(0,191,255,0.5);
+}
+
+
+/* =========================================
+   ARTICLE IMAGE
+========================================= */
+
+.article-image {
+
+    width: 100%;
+
+    margin:
+        35px 0 10px;
+
+    border-radius: 8px;
+
+    overflow: hidden;
+
+    border:
+        1px solid rgba(0,191,255,0.28);
+
+    background:
+        #041522;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,0.4);
+}
+
+
+.article-image img {
+
+    width: 100%;
+
+    height: 430px;
+
+    object-fit: cover;
+
+    display: block;
+
+    transition:
+        transform 0.6s ease;
+}
+
+
+.article-image:hover img {
+
+    transform:
+        scale(1.025);
+}
+
+
+.article-caption {
+
+    padding:
+        10px 15px 12px;
+
+    text-align: center;
+
+    font-size: 10px;
+
+    color:
+        #759aaa;
+
+    background:
+        rgba(2,15,25,0.8);
+
+    letter-spacing: 0.3px;
+}
+
+
+/* =========================================
+   HIGHLIGHT BOX
+========================================= */
+
+.highlight-box {
+
+    margin:
+        35px 0;
+
+    padding:
+        25px 30px;
+
+    border:
+        1px solid rgba(0,191,255,0.25);
+
+    border-radius:
+        8px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(7,37,57,0.85),
+            rgba(3,22,36,0.85)
+        );
+
+    position:
+        relative;
+
+    overflow:
+        hidden;
+}
+
+
+.highlight-box::before {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    left: 0;
+
+    top: 0;
+
+    width: 4px;
+
+    height: 100%;
+
+    background:
+        #00bfff;
+}
+
+
+.highlight-box h3 {
+
+    color:
+        #55d8ff;
+
+    font-size:
+        15px;
+
+    margin-bottom:
+        12px;
+
+    letter-spacing:
+        0.7px;
+}
+
+
+.highlight-box p {
+
+    margin:
+        0;
+
+    font-size:
+        14px;
+
+    line-height:
+        1.8;
+
+    text-align:
+        left;
+}
+
+
+/* =========================================
+   FINAL SECTION
+========================================= */
+
+.article-ending {
+
+    text-align:
+        center;
+
+    margin:
+        55px 0 20px;
+
+    padding:
+        30px;
+
+    border-top:
+        1px solid rgba(0,191,255,0.2);
+
+    border-bottom:
+        1px solid rgba(0,191,255,0.2);
+}
+
+
+.article-ending h3 {
+
+    color:
+        #55d8ff;
+
+    font-size:
+        18px;
+
+    margin-bottom:
+        10px;
+}
+
+
+.article-ending p {
+
+    text-align:
+        center;
+
+    margin:
+        0;
+
+    font-size:
+        13px;
+
+    color:
+        #91b5c4;
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.footer {
+
+    text-align:
+        center;
+
+    padding:
+        22px;
+
+    border-top:
+        1px solid rgba(0,191,255,0.15);
+
+    background:
+        rgba(2,13,22,0.9);
+
+    color:
+        #6f9aaa;
+
+    font-size:
+        11px;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 800px) {
+
+    .header-inner {
+
+        padding:
+            10px 15px;
+    }
+
+
+    .logo-text h2 {
+
+        font-size:
+            13px;
+    }
+
+
+    .logo-text span {
+
+        font-size:
+            8px;
+    }
+
+
+    .article-wrapper {
+
+        margin-top:
+            30px;
+
+        padding:
+            0 15px;
+    }
+
+
+    .article-header h1 {
+
+        font-size:
+            27px;
+    }
+
+
+    .hero-image {
+
+        height:
+            330px;
+    }
+
+
+    .article-body p {
+
+        font-size:
+            14px;
+
+        text-align:
+            left;
+    }
+
+
+    .article-intro {
+
+        font-size:
+            15px;
+
+        padding:
+            20px;
+    }
+
+
+    .article-image img {
+
+        height:
+            300px;
+    }
+
+}
+
+
+@media (max-width: 500px) {
+
+    .header-inner {
+
+        min-height:
+            75px;
+    }
+
+
+    .logo-area img {
+
+        width:
+            45px;
+
+        height:
+            45px;
+    }
+
+
+    .logo-text span {
+
+        display:
+            none;
+    }
+
+
+    .back-button {
+
+        padding:
+            8px 11px;
+
+        font-size:
+            9px;
+    }
+
+
+    .article-header h1 {
+
+        font-size:
+            23px;
+    }
+
+
+    .article-meta {
+
+        font-size:
+            10px;
+
+        gap:
+            10px;
+    }
+
+
+    .hero-image {
+
+        height:
+            250px;
+    }
+
+
+    .article-image img {
+
+        height:
+            240px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================
+     HEADER
+========================================= -->
+
+<header class="header">
+
+    <div class="header-inner">
+
+
+        <div class="logo-area">
+
+            <img
+                src="logo_atc.png"
+                alt="ATC Logo"
+            >
+
+            <div class="logo-text">
+
+                <h2>
+                    AIR TRAFFIC CONTROL
+                </h2>
+
+                <span>
+                    INFORMATION PORTAL
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <a
+            href="main_page_ver2.html"
+            class="back-button"
+        >
+            ← KEMBALI KE PORTAL
+        </a>
+
+
+    </div>
+
+</header>
+
+
+
+<!-- =========================================
+     ARTICLE
+========================================= -->
+
+<main class="article-wrapper">
+
+
+    <!-- =====================================
+         ARTICLE HEADER
+    ====================================== -->
+
+    <section class="article-header">
+
+
+        <div class="article-category">
+            BERITA • TRADE MASTER KLLU
+        </div>
+
+
+        <h1>
+
+            DIALOG PEGAWAI KAWALAN LALULINTAS UDARA (KLLU) DAN ANGGOTA PEMBANTU KAWALAN TRAFIK UDARA (PKTU) KOLEJ TENTERA UDARA BERSAMA TRADE MASTER KLLU
+
+        </h1>
+
+
+        <div class="article-meta">
+
+            <span>
+                📍 ALOR SETAR
+            </span>
+
+            <span>
+                📅 7 APRIL 2026
+            </span>
+
+            <span>
+                ✈ AIR TRAFFIC CONTROL
+            </span>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================
+         PHOTO 1 - HERO
+    ====================================== -->
+
+    <div class="hero-image">
+
+        <img
+            src="trade1.jpg"
+            alt="Dialog Pegawai KLLU dan Anggota PKTU"
+        >
+
+        <div class="hero-overlay"></div>
+
+    </div>
+
+
+    <div class="image-caption">
+
+        Trade Master KLLU bersama delegasi melaksanakan dialog bersama Pegawai KLLU dan Anggota PKTU di Kolej Tentera Udara, Alor Setar.
+
+    </div>
+
+
+
+    <!-- =====================================
+         ARTICLE BODY
+    ====================================== -->
+
+    <article class="article-body">
+
+
+        <!-- INTRODUCTION -->
+
+        <div class="article-intro">
+
+            <strong>
+                ALOR SETAR, 7 Apr 26
+            </strong>
+            – Brig Jen Mohd Shahfreen bin Baba TUDM bersama delegasi telah melaksanakan dialog bersama Pegawai KLLU dan Anggota PKTU di Kolej Tentera Udara (KTU), Alor Setar.
+
+        </div>
+
+
+        <p>
+
+            Delegasi yang hadir terdiri daripada PS 2 Rancang LLP Sistem Darat, PS 2 Sistem Darat, PS 2 Prosedur dan PS 2 Pemeriksa KLLU.
+
+        </p>
+
+
+
+        <!-- =====================================
+             PHOTO 2
+        ====================================== -->
+
+        <div class="article-image">
+
+            <img
+                src="trade2.jpg"
+                alt="Ketibaan Trade Master KLLU"
+            >
+
+            <div class="article-caption">
+
+                Ketibaan Trade Master KLLU dan delegasi di Kolej Tentera Udara, Alor Setar.
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =====================================
+             SECTION 1
+        ====================================== -->
+
+        <h2 class="section-title">
+
+            KUNJUNGAN HORMAT KE KOLEJ TENTERA UDARA
+
+        </h2>
+
+
+        <p>
+
+            Ketibaan Trade Master KLLU telah disambut oleh Ketua Cawangan Operasi (KCO) Lt Kol Murad bin Mahmud TUDM seterusnya membuat Kunjungan Hormat ke atas Komandan Kolej, Brig Jen Azman bin Taib TUDM dan menandatangani buku lawatan di Bangunan Markas Kolej.
+
+        </p>
+
+
+
+        <!-- =====================================
+             HIGHLIGHT BOX
+        ====================================== -->
+
+        <div class="highlight-box">
+
+            <h3>
+                KUNJUNGAN HORMAT
+            </h3>
+
+            <p>
+
+                Kunjungan hormat dan sesi menandatangani buku lawatan menjadi sebahagian daripada pengisian lawatan Trade Master KLLU ke Kolej Tentera Udara, Alor Setar.
+
+            </p>
+
+        </div>
+
+
+
+        <!-- =====================================
+             PHOTO 3
+        ====================================== -->
+
+        <div class="article-image">
+
+            <img
+                src="trade3.jpg"
+                alt="Kunjungan Hormat Trade Master KLLU"
+            >
+
+            <div class="article-caption">
+
+                Kunjungan Hormat Trade Master KLLU ke atas Komandan Kolej Tentera Udara.
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =====================================
+             SECTION 2
+        ====================================== -->
+
+        <h2 class="section-title">
+
+            SESI DIALOG DAN PERKONGSIAN BUAH FIKIRAN
+
+        </h2>
+
+
+        <p>
+
+            Trade Master KLLU telah mengadakan sesi dialog dan bertukar buah fikiran bersama Pegawai KLLU dan Anggota PKTU bertempat di Bilik Mesyuarat Kolej.
+
+        </p>
+
+
+        <p>
+
+            Sesi ini menjadi platform bagi perkongsian pandangan, pengalaman serta isu-isu berkaitan bidang kawalan lalu lintas udara dan peranan anggota dalam menyokong kelancaran operasi penerbangan.
+
+        </p>
+
+
+
+        <!-- =====================================
+             PHOTO 4
+        ====================================== -->
+
+        <div class="article-image">
+
+            <img
+                src="trade4.jpg"
+                alt="Sesi Dialog KLLU dan PKTU"
+            >
+
+            <div class="article-caption">
+
+                Sesi dialog dan perkongsian buah fikiran bersama Pegawai KLLU dan Anggota PKTU.
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =====================================
+             SECTION 3
+        ====================================== -->
+
+        <h2 class="section-title">
+
+            TAKLIMAT PENGOPERASIAN LAPANGAN TERBANG ALOR SETAR
+
+        </h2>
+
+
+        <p>
+
+            Selain itu, KCO turut menyampaikan taklimat pengoperasian lapangan terbang Alor Setar diikuti PS 2 Pemeriksa KLLU yang membentangkan inisiatif pembangunan laman web KLLU.
+
+        </p>
+
+
+        <p>
+
+            Taklimat dan pembentangan tersebut memberi gambaran mengenai pengoperasian lapangan terbang serta usaha memperkukuhkan penyampaian maklumat dan keupayaan digital dalam bidang Kawalan Lalu Lintas Udara.
+
+        </p>
+
+
+
+        <!-- =====================================
+             SECTION 4
+        ====================================== -->
+
+        <h2 class="section-title">
+
+            LAWATAN KE BILIK OPERASI DAN GDOC
+
+        </h2>
+
+
+        <p>
+
+            Dialog diakhiri dengan lawatan dan taklimat ringkas mengenai pengoperasian Cawangan Operasi kepada Trade Master KLLU dan delegasi di Bilik Operasi Pangkalan dan juga Ground Defence Operation Centre (GDOC).
+
+        </p>
+
+
+
+        <!-- =====================================
+             PHOTO 5
+        ====================================== -->
+
+        <div class="article-image">
+
+            <img
+                src="trade5.jpg"
+                alt="Lawatan ke Bilik Operasi dan GDOC"
+            >
+
+            <div class="article-caption">
+
+                Lawatan dan taklimat ringkas mengenai pengoperasian Cawangan Operasi di Bilik Operasi Pangkalan dan Ground Defence Operation Centre (GDOC).
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =====================================
+             CLOSING
+        ====================================== -->
+
+        <h2 class="section-title">
+
+            MEMPERKUKUH KERJASAMA DAN KEUPAYAAN KLLU
+
+        </h2>
+
+
+        <p>
+
+            Pelaksanaan dialog ini mencerminkan usaha berterusan Trade Master KLLU dalam memperkukuhkan hubungan, perkongsian pengetahuan dan kefahaman bersama Pegawai KLLU serta Anggota PKTU, khususnya dalam aspek pengoperasian dan pembangunan keupayaan kawalan trafik udara.
+
+        </p>
+
+
+        <p>
+
+            Program seperti ini turut menjadi platform penting bagi memperkasakan komunikasi, pertukaran pengalaman serta kerjasama dalam kalangan warga KLLU dan PKTU demi menyokong keperluan operasi semasa dan masa hadapan.
+
+        </p>
+
+
+
+        <!-- =====================================
+             END ARTICLE
+        ====================================== -->
+
+        <div class="article-ending">
+
+            <p>
+
+                Air Traffic Control • TUDM • KLLU
+
+            </p>
+
+        </div>
+
+
+    </article>
+
+</main>
+
+
+
+<!-- =========================================
+     FOOTER
+========================================= -->
+
+<footer class="footer">
+
+    Air Traffic Control Information Portal © 2026
+
+</footer>
+
+
+</body>
+
+</html>

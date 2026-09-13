@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ATC Vision</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Segoe UI",sans-serif;
+}
+
+body{
+    background:#07131f;
+    color:white;
+    overflow:hidden;
+}
+
+/* Background Grid */
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:
+    linear-gradient(rgba(0,255,150,.05) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(0,255,150,.05) 1px,transparent 1px);
+    background-size:40px 40px;
+}
+
+/* Radar */
+
+.radar{
+    position:absolute;
+    width:550px;
+    height:550px;
+    border:2px solid rgba(0,255,150,.18);
+    border-radius:50%;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+}
+
+.radar::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    border-radius:50%;
+    background:conic-gradient(rgba(0,255,150,.35),transparent 70deg);
+    animation:rotate 5s linear infinite;
+}
+
+@keyframes rotate{
+    to{
+        transform:rotate(360deg);
+    }
+}
+
+/* Aircraft */
+
+.aircraft{
+    position:absolute;
+    color:#00ff99;
+    font-size:26px;
+    opacity:.35;
+    z-index:1;
+}
+
+.a1{
+    top:15%;
+    left:-10%;
+    animation:flyRight 18s linear infinite;
+}
+
+.a2{
+    bottom:20%;
+    right:-10%;
+    transform:rotate(180deg);
+    animation:flyLeft 22s linear infinite;
+}
+
+
+@keyframes flyRight{
+
+from{
+    transform:translateX(0);
+}
+
+to{
+    transform:translateX(120vw);
+}
+
+}
+
+
+@keyframes flyLeft{
+
+from{
+    transform:translateX(0) rotate(180deg);
+}
+
+to{
+    transform:translateX(-120vw) rotate(180deg);
+}
+
+}
+/* Main Content */
+
+.container{
+    position:relative;
+    z-index:5;
+    width:100%;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+}
+
+.card{
+    width:800px;
+    padding:45px;
+    border-radius:20px;
+    background:rgba(255,255,255,.08);
+    backdrop-filter:blur(15px);
+    border:1px solid rgba(255,255,255,.15);
+    box-shadow:0 0 35px rgba(0,255,150,.15);
+}
+
+.logo img{
+    width:120px;
+    margin-bottom:20px;
+}
+
+h1{
+    color:#00ff99;
+    margin-bottom:35px;
+    font-size:36px;
+}
+
+.section-title{
+    color:#00ff99;
+    font-size:22px;
+    margin-top:25px;
+    margin-bottom:12px;
+}
+
+.vision{
+    font-size:22px;
+    line-height:1.8;
+    color:#f2f2f2;
+}
+
+.back{
+    display:inline-block;
+    margin-top:40px;
+    padding:12px 30px;
+    text-decoration:none;
+    background:#00ff99;
+    color:#07131f;
+    border-radius:8px;
+    font-weight:bold;
+    transition:.3s;
+}
+
+.back:hover{
+    transform:translateY(-2px);
+    box-shadow:0 0 20px #00ff99;
+}
+</style>
+
+</head>
+<body>
+
+<div class="radar"></div>
+
+<div class="aircraft a1">✈</div>
+<div class="aircraft a2">✈</div>
+
+<div class="container">
+
+<div class="card">
+
+<div class="logo">
+    <!-- Replace with your ATC logo -->
+    <img src="logo_atc.png" alt="ATC Logo">
+</div>
+
+<h1>AIR TRAFFIC CONTROL</h1>
+
+<div class="section-title">
+Visi (Bahasa Malaysia)
+</div>
+
+<div class="vision">
+Kawalan Trafik Udara Dan Komunikasi Yang Kredibel Serta Berwibawa.
+</div>
+
+<div class="section-title">
+Vision (English)
+</div>
+
+<div class="vision">
+Credible and Reputable Air Traffic Control and Communication.
+</div>
+
+<a href="login.html" class="back">← Back to Login</a>
+
+</div>
+
+</div>
+
+</body>
+</html>

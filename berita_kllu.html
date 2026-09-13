@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Berita KLLU | ATC Information Portal</title>
+
+<style>
+
+/* =========================================================
+   GLOBAL
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    min-height: 100vh;
+    background:
+        radial-gradient(circle at 50% 0%, rgba(0, 120, 255, 0.15), transparent 40%),
+        linear-gradient(135deg, #06121e, #0a1c2c 50%, #04101a);
+    color: white;
+    overflow-x: hidden;
+}
+
+
+/* =========================================================
+   BACKGROUND GRID
+========================================================= */
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+
+    background-image:
+        linear-gradient(rgba(0, 150, 255, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 150, 255, 0.035) 1px, transparent 1px);
+
+    background-size: 40px 40px;
+
+    pointer-events: none;
+    z-index: -1;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.header {
+    width: 100%;
+    min-height: 90px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 12px 35px;
+
+    background: rgba(4, 16, 27, 0.96);
+
+    border-bottom: 1px solid rgba(0, 174, 255, 0.35);
+
+    box-shadow:
+        0 5px 25px rgba(0, 0, 0, 0.4);
+}
+
+
+/* =========================================================
+   LOGOS
+========================================================= */
+
+.logo-left {
+    height: 65px;
+    width: auto;
+    object-fit: contain;
+}
+
+.logo-right {
+    height: 65px;
+    width: auto;
+    object-fit: contain;
+}
+
+
+/* =========================================================
+   PAGE TITLE
+========================================================= */
+
+.page-header {
+    text-align: center;
+
+    padding: 40px 20px 25px;
+}
+
+.page-header h1 {
+    font-size: 32px;
+
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+
+    color: #ffffff;
+
+    text-shadow:
+        0 0 15px rgba(0, 170, 255, 0.35);
+}
+
+.page-header .line {
+    width: 90px;
+    height: 3px;
+
+    margin: 15px auto;
+
+    background: #00aaff;
+
+    border-radius: 10px;
+
+    box-shadow:
+        0 0 12px rgba(0, 170, 255, 0.7);
+}
+
+.page-header p {
+    color: #91b5cc;
+
+    font-size: 14px;
+
+    letter-spacing: 1px;
+}
+
+
+/* =========================================================
+   NEWS CONTAINER
+========================================================= */
+
+.news-container {
+
+    width: 92%;
+    max-width: 1250px;
+
+    margin: 10px auto 60px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 25px;
+}
+
+
+/* =========================================================
+   NEWS CARD
+========================================================= */
+
+.news-card {
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(14, 38, 56, 0.96),
+            rgba(5, 20, 32, 0.96)
+        );
+
+    border: 1px solid rgba(0, 170, 255, 0.22);
+
+    border-radius: 12px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.35);
+
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+.news-card:hover {
+
+    transform: translateY(-7px);
+
+    border-color: rgba(0, 180, 255, 0.7);
+
+    box-shadow:
+        0 15px 40px rgba(0, 120, 255, 0.18);
+}
+
+
+/* =========================================================
+   NEWS IMAGE
+========================================================= */
+
+.news-image {
+
+    width: 100%;
+    height: 220px;
+
+    object-fit: cover;
+
+    display: block;
+
+    background: #091725;
+
+    transition:
+        transform 0.4s ease;
+}
+
+
+.news-card:hover .news-image {
+    transform: scale(1.03);
+}
+
+
+/* =========================================================
+   NEWS CONTENT
+========================================================= */
+
+.news-content {
+
+    padding: 20px;
+}
+
+
+/* =========================================================
+   DATE
+========================================================= */
+
+.news-date {
+
+    font-size: 12px;
+
+    color: #63c8ff;
+
+    letter-spacing: 1px;
+
+    margin-bottom: 9px;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   NEWS TITLE
+========================================================= */
+
+.news-title {
+
+    display: block;
+
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 17px;
+
+    line-height: 1.45;
+
+    font-weight: 600;
+
+    transition:
+        color 0.25s ease;
+}
+
+
+.news-title:hover {
+
+    color: #49c4ff;
+
+}
+
+
+/* =========================================================
+   READ MORE
+========================================================= */
+
+.read-more {
+
+    display: inline-block;
+
+    margin-top: 15px;
+
+    padding: 8px 14px;
+
+    border: 1px solid rgba(0, 170, 255, 0.35);
+
+    border-radius: 5px;
+
+    color: #73ceff;
+
+    font-size: 12px;
+
+    letter-spacing: 1px;
+
+    text-decoration: none;
+
+    transition: all 0.25s ease;
+}
+
+
+.read-more:hover {
+
+    background: rgba(0, 170, 255, 0.12);
+
+    border-color: #00aaff;
+
+    color: white;
+}
+
+
+/* =========================================================
+   ARTICLE PAGE
+========================================================= */
+
+.article-page {
+
+    display: none;
+
+    width: 92%;
+
+    max-width: 1100px;
+
+    margin: 30px auto 60px;
+
+    animation: articleFade 0.4s ease;
+}
+
+
+@keyframes articleFade {
+
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* =========================================================
+   ARTICLE BOX
+========================================================= */
+
+.article-box {
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(10, 31, 47, 0.98),
+            rgba(4, 17, 28, 0.98)
+        );
+
+    border: 1px solid rgba(0, 170, 255, 0.3);
+
+    border-radius: 12px;
+
+    padding: 30px;
+
+    box-shadow:
+        0 15px 45px rgba(0, 0, 0, 0.45);
+}
+
+
+/* =========================================================
+   ARTICLE IMAGE
+========================================================= */
+
+.article-image {
+
+    width: 100%;
+
+    max-height: 520px;
+
+    object-fit: cover;
+
+    border-radius: 8px;
+
+    display: block;
+
+    margin-bottom: 30px;
+
+    background: #091725;
+}
+
+
+/* =========================================================
+   ARTICLE DATE
+========================================================= */
+
+.article-date {
+
+    color: #5bc8ff;
+
+    font-size: 13px;
+
+    letter-spacing: 1px;
+
+    margin-bottom: 12px;
+}
+
+
+/* =========================================================
+   ARTICLE TITLE
+========================================================= */
+
+.article-title {
+
+    font-size: 30px;
+
+    line-height: 1.35;
+
+    margin-bottom: 25px;
+
+    color: white;
+}
+
+
+/* =========================================================
+   ARTICLE TEXT
+========================================================= */
+
+.article-text {
+
+    color: #c2d2dc;
+
+    font-size: 16px;
+
+    line-height: 1.8;
+
+    text-align: justify;
+}
+
+
+.article-text p {
+
+    margin-bottom: 18px;
+}
+
+
+/* =========================================================
+   BACK BUTTON
+========================================================= */
+
+.back-button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    margin-bottom: 20px;
+
+    padding: 10px 17px;
+
+    border-radius: 6px;
+
+    border: 1px solid rgba(0, 170, 255, 0.35);
+
+    background: rgba(0, 120, 200, 0.08);
+
+    color: #72ceff;
+
+    cursor: pointer;
+
+    font-size: 13px;
+
+    transition: all 0.25s ease;
+}
+
+
+.back-button:hover {
+
+    background: rgba(0, 170, 255, 0.18);
+
+    border-color: #00aaff;
+
+    color: white;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.footer {
+
+    text-align: center;
+
+    padding: 25px 15px;
+
+    color: #668398;
+
+    font-size: 12px;
+
+    border-top: 1px solid rgba(0, 170, 255, 0.15);
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 950px) {
+
+    .news-container {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+}
+
+
+@media (max-width: 650px) {
+
+    .header {
+
+        padding: 10px 15px;
+    }
+
+    .logo-left,
+    .logo-right {
+
+        height: 50px;
+    }
+
+    .page-header h1 {
+
+        font-size: 24px;
+    }
+
+    .news-container {
+
+        grid-template-columns: 1fr;
+
+        width: 94%;
+    }
+
+    .article-page {
+
+        width: 94%;
+    }
+
+    .article-box {
+
+        padding: 20px;
+    }
+
+    .article-title {
+
+        font-size: 23px;
+    }
+
+    .article-text {
+
+        font-size: 15px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =======================================================
+     HEADER
+======================================================= -->
+
+<header class="header">
+
+    <!-- LEFT LOGO -->
+    <img
+        src="logo_atc.png"
+        class="logo-right"
+        alt="ATC Logo"
+    >
+
+    <!-- RIGHT LOGO -->
+    <img
+        src="logo_tudm.png"
+        class="logo-left"
+        alt="Air Force Logo"
+    >
+
+</header>
+
+
+
+<!-- =======================================================
+     NEWS LIST
+======================================================= -->
+
+<div id="newsList">
+
+
+    <!-- PAGE TITLE -->
+
+    <section class="page-header">
+
+        <h1>BERITA KLLU</h1>
+
+        <div class="line"></div>
+
+        <p>
+            Berita dan Aktiviti Kawalan Lalu Lintas Udara
+        </p>
+
+    </section>
+
+
+
+    <!-- ===================================================
+         NEWS CARDS
+    ==================================================== -->
+
+    <section class="news-container">
+
+
+        <!-- NEWS 1 -->
+
+        <article class="news-card">
+
+            <img
+                src="mesyuarat-panel-kllu-5-26.jpg"
+                class="news-image"
+                alt="Mesyuarat Panel Tred KLLU Siri 5/26"
+            >
+
+            <div class="news-content">
+
+                <div class="news-date">
+                    18 OGOS 2026
+                </div>
+
+                <a
+                    href="#"
+                    class="news-title"
+                >
+                    MESYUARAT PANEL TRED KAWALAN LALU LINTAS UDARA (KLLU) SIRI 5/26
+                </a>
+
+                <a
+                    href="news-mesyuarat-panel-kllu-5-26.html"
+                    class="read-more"
+                >
+                    BACA BERITA →
+                </a>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- NEWS 2 -->
+
+        <article class="news-card">
+
+            <img
+                src="kllu-siri-2-2026.jpg"
+                class="news-image"
+                alt="Mesyuarat KLLU Siri 2 Tahun 2026"
+            >
+
+            <div class="news-content">
+
+                <div class="news-date">
+                    17 JULAI 2026
+                </div>
+
+                <a
+                    href="#"
+                    class="news-title"
+                >
+                    MESYUARAT KLLU SIRI 2 TAHUN 2026
+                </a>
+
+                <a
+                    href="news-kllu-siri-2-2026.html"
+                    class="read-more"
+                >
+                    BACA BERITA →
+                </a>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- NEWS 3 -->
+
+        <article class="news-card">
+
+            <img
+                src="dialog-kllu-trade-master.jpg"
+                class="news-image"
+                alt="Dialog Pegawai KLLU dan Anggota PKTU"
+            >
+
+            <div class="news-content">
+
+                <div class="news-date">
+                    7 APRIL 2026
+                </div>
+
+                <a
+                    href="#"
+                    class="news-title"
+                >
+                    DIALOG PEGAWAI KAWALAN LALULINTAS UDARA (KLLU) DAN ANGGOTA PEMBANTU KAWALAN TRAFIK UDARA (PKTU) KOLEJ TENTERA UDARA BERSAMA TRADE MASTER KLLU
+                </a>
+
+                <a
+                    href="news-dialog-kllu-trade-master.html"
+                    class="read-more"
+                >
+                    BACA BERITA →
+                </a>
+
+            </div>
+
+        </article>
+
+
+    </section>
+
+</div>
+
+
+
+<!-- =======================================================
+     ARTICLE 1
+======================================================= -->
+
+<section
+    id="article1"
+    class="article-page"
+>
+
+    <button
+        class="back-button"
+        onclick="showNewsList()"
+    >
+        ← KEMBALI KE BERITA
+    </button>
+
+
+    <div class="article-box">
+
+        <img
+            src="berita-kllu-1.jpg"
+            class="article-image"
+            alt="Mesyuarat Panel Tred KLLU Siri 5/26"
+        >
+
+        <div class="article-date">
+            18 OGOS 2026
+        </div>
+
+        <h1 class="article-title">
+            MESYUARAT PANEL TRED KAWALAN LALU LINTAS UDARA (KLLU) SIRI 5/26
+        </h1>
+
+        <div class="article-text">
+
+            <p>
+                Mesyuarat Panel Tred Kawalan Lalu Lintas Udara (KLLU)
+                Siri 5/26 telah diadakan pada 18 Ogos 2026.
+            </p>
+
+            <p>
+                Mesyuarat ini merupakan salah satu platform penting
+                dalam membincangkan perkara-perkara berkaitan bidang
+                kawalan lalu lintas udara serta perkembangan dan
+                keperluan semasa tred KLLU.
+            </p>
+
+            <p>
+                Perbincangan yang diadakan turut memberi tumpuan kepada
+                usaha meningkatkan tahap profesionalisme, kompetensi
+                dan keberkesanan anggota dalam melaksanakan tugas
+                kawalan lalu lintas udara.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =======================================================
+     ARTICLE 2
+======================================================= -->
+
+<section
+    id="article2"
+    class="article-page"
+>
+
+    <button
+        class="back-button"
+        onclick="showNewsList()"
+    >
+        ← KEMBALI KE BERITA
+    </button>
+
+
+    <div class="article-box">
+
+        <img
+            src="berita-kllu-2.jpg"
+            class="article-image"
+            alt="Mesyuarat KLLU Siri 2 Tahun 2026"
+        >
+
+        <div class="article-date">
+            17 JULAI 2026
+        </div>
+
+        <h1 class="article-title">
+            MESYUARAT KLLU SIRI 2 TAHUN 2026
+        </h1>
+
+        <div class="article-text">
+
+            <p>
+                Mesyuarat Kawalan Lalu Lintas Udara (KLLU)
+                Siri 2 Tahun 2026 telah diadakan pada
+                17 Julai 2026.
+            </p>
+
+            <p>
+                Mesyuarat ini menjadi medan perbincangan bagi
+                menyelaras perkara-perkara berkaitan operasi,
+                pengurusan dan pembangunan bidang kawalan lalu
+                lintas udara.
+            </p>
+
+            <p>
+                Pelaksanaan mesyuarat secara berkala ini adalah
+                penting bagi memastikan segala perkara berkaitan
+                tred KLLU dapat dibincangkan dan diselaraskan
+                dengan berkesan.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =======================================================
+     ARTICLE 3
+======================================================= -->
+
+<section
+    id="article3"
+    class="article-page"
+>
+
+    <button
+        class="back-button"
+        onclick="showNewsList()"
+    >
+        ← KEMBALI KE BERITA
+    </button>
+
+
+    <div class="article-box">
+
+        <img
+            src="berita-kllu-3.jpg"
+            class="article-image"
+            alt="Dialog Pegawai KLLU dan Anggota PKTU"
+        >
+
+        <div class="article-date">
+            7 APRIL 2026
+        </div>
+
+        <h1 class="article-title">
+            DIALOG PEGAWAI KAWALAN LALULINTAS UDARA (KLLU) DAN ANGGOTA PEMBANTU KAWALAN TRAFIK UDARA (PKTU) KOLEJ TENTERA UDARA BERSAMA TRADE MASTER KLLU
+        </h1>
+
+        <div class="article-text">
+
+            <p>
+                Dialog Pegawai Kawalan Lalulintas Udara (KLLU) dan
+                Anggota Pembantu Kawalan Trafik Udara (PKTU) Kolej
+                Tentera Udara bersama Trade Master KLLU telah
+                diadakan pada 7 April 2026.
+            </p>
+
+            <p>
+                Program dialog ini menyediakan ruang interaksi
+                secara langsung antara pegawai, anggota PKTU dan
+                Trade Master KLLU bagi membincangkan perkara-perkara
+                berkaitan tugas serta bidang kawalan trafik udara.
+            </p>
+
+            <p>
+                Sesi ini turut menjadi platform untuk berkongsi
+                pandangan, pengalaman dan pengetahuan bagi
+                memperkukuhkan kefahaman serta meningkatkan
+                profesionalisme dalam kalangan warga KLLU.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =======================================================
+     FOOTER
+======================================================= -->
+
+<footer class="footer">
+
+    ATC Information Portal © 2026
+
+</footer>
+
+
+
+<!-- =======================================================
+     JAVASCRIPT
+======================================================= -->
+
+<script>
+
+/* =========================================================
+   OPEN ARTICLE
+========================================================= */
+
+function openArticle(number) {
+
+    // Hide news list
+    document.getElementById("newsList").style.display = "none";
+
+    // Hide all articles
+    document.querySelectorAll(".article-page").forEach(function(article) {
+
+        article.style.display = "none";
+
+    });
+
+    // Show selected article
+    document.getElementById("article" + number).style.display = "block";
+
+    // Scroll to top
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+}
+
+
+/* =========================================================
+   RETURN TO NEWS LIST
+========================================================= */
+
+function showNewsList() {
+
+    // Hide all articles
+    document.querySelectorAll(".article-page").forEach(function(article) {
+
+        article.style.display = "none";
+
+    });
+
+    // Show news list
+    document.getElementById("newsList").style.display = "block";
+
+    // Scroll to top
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+}
+
+</script>
+
+
+</body>
+</html>

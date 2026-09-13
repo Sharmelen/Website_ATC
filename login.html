@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ATC Login</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Segoe UI,sans-serif}
+body{height:100vh;overflow:hidden;background:#07131f}
+body:before{content:"";position:fixed;inset:0;background:linear-gradient(rgba(0,255,150,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(0,255,150,.08) 1px,transparent 1px);background-size:40px 40px}
+.wrapper{display:flex;height:100vh}
+.sidebar{width:260px;background:#0c1d30;border-right:2px solid #00ff99;padding:20px;display:flex;flex-direction:column;gap:8px;z-index:2;overflow:auto}
+.tab-btn{display:block;width:100%;padding:12px;background:#10233d;color:#fff;text-decoration:none;border:none;border-radius:8px;text-align:left;cursor:pointer}
+.tab-btn:hover{background:#17324f}
+.submenu{display:none;flex-direction:column;margin-left:15px}
+.submenu a{padding:10px;background:#183652;color:#fff;text-decoration:none;border-left:3px solid #00ff99;border-radius:5px;margin:3px 0}
+.submenu a:hover{background:#24557d}
+.center{flex:1;display:flex;justify-content:center;align-items:center;position:relative}
+.radar{position:absolute;width:600px;height:600px;border-radius:50%;border:2px solid rgba(0,255,150,.3);box-shadow:0 0 40px rgba(0,255,150,.2)}
+.radar:before{content:"";position:absolute;inset:0;border-radius:50%;background:conic-gradient(rgba(0,255,150,.6),transparent 70deg);animation:scan 4s linear infinite}
+@keyframes scan{to{transform:rotate(360deg)}}
+.login-container{position:relative;z-index:1;width:380px;padding:40px;border-radius:20px;background:rgba(255,255,255,.08);backdrop-filter:blur(15px);border:1px solid rgba(255,255,255,.15);text-align:center}
+.logo{font-size:55px}.subtitle{color:#cfd8dc;margin:20px 0}
+h1{color:#00ff99}
+input{width:100%;padding:14px;margin-bottom:15px;border:none;border-radius:10px;background:rgba(255,255,255,.1);color:#fff}
+button.login{width:100%;padding:14px;border:none;border-radius:10px;background:#00ff99;font-weight:bold;cursor:pointer}
+.aircraft{position:absolute;color:#00ff99;font-size:24px;animation:fly 15s linear infinite;opacity:.6}
+.aircraft:nth-child(1){top:10%;left:-10%}.aircraft:nth-child(2){top:70%;left:-15%;animation-delay:6s}
+@keyframes fly{to{transform:translateX(130vw)}}
+</style></head>
+<body>
+<div class="wrapper">
+<!--<div class="sidebar">
+<a class="tab-btn" href="visi.html">📌 Visi ATC</a>
+<a class="tab-btn" href="trade_master_atc.html">🎓 Trade Master ATC</a>
+<button class="tab-btn dropdown-btn">✈ WMSA (Subang)</button><div class="submenu"><a href="wmsa_kco.html">👨‍✈️ Ketua Cawangan Operasi</a><a href="wmsa_info.html">🛬 Aerodrome Info</a></div>
+<button class="tab-btn dropdown-btn">✈ WMKD (Kuantan)</button><div class="submenu"><a href="wmkd_kco.html">👨‍✈️ Ketua Cawangan Operasi</a><a href="wmkd_info.html">🛬 Aerodrome Info</a></div>
+<button class="tab-btn dropdown-btn">✈ WMGK (Gong Kedak)</button><div class="submenu"><a href="wmgk_kco.html">👨‍✈️ Ketua Cawangan Operasi</a><a href="wmgk_info.html">🛬 Aerodrome Info</a></div>
+<button class="tab-btn dropdown-btn">✈ WMKB (Butterworth)</button><div class="submenu"><a href="wmkb_kco.html">👨‍✈️ Ketua Cawangan Operasi</a><a href="wmkb_info.html">🛬 Aerodrome Info</a></div>
+<button class="tab-btn dropdown-btn">✈ WMLH (Lumut)</button><div class="submenu"><a href="wmlh_kco.html">👨‍✈️ Ketua Cawangan Operasi</a><a href="wmlh_info.html">🛬 Aerodrome Info</a></div>
+<button class="tab-btn dropdown-btn">✈ WBKL (Labuan)</button><div class="submenu"><a href="wbkl_kco.html">👨‍✈️ Ketua Cawangan Operasi</a><a href="wbkl_info.html">🛬 Aerodrome Info</a></div>
+</div> -->
+<div class="center">
+<div class="aircraft">✈</div><div class="aircraft">✈</div><div class="radar"></div>
+<div class="login-container">
+<div class="logo">🛫</div><h1>ATC LOGIN</h1><div class="subtitle">Air Traffic Control Management System</div>
+<form method="POST" action="login.php">
+<input type="text" name="username" placeholder="Controller ID" required>
+<input type="password" name="password" placeholder="Password" required>
+<button class="login" type="submit">LOGIN</button></form>
+</div></div></div>
+<script>
+document.querySelectorAll('.dropdown-btn').forEach(btn=>{
+ btn.onclick=()=>{
+  let sub=btn.nextElementSibling;
+  document.querySelectorAll('.submenu').forEach(m=>{if(m!==sub)m.style.display='none';});
+  sub.style.display=sub.style.display==='flex'?'none':'flex';
+ };
+});
+</script>
+</body></html>

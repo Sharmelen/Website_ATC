@@ -1,0 +1,1210 @@
+<!DOCTYPE html>
+<html lang="ms">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Mesyuarat Panel Tred KLLU Siri 5/26</title>
+
+<style>
+
+/* =========================================
+   GLOBAL
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+
+    background:
+        radial-gradient(
+            circle at 50% 10%,
+            rgba(0, 120, 180, 0.16),
+            transparent 40%
+        ),
+        linear-gradient(
+            135deg,
+            #020b13,
+            #061a29,
+            #03111c
+        );
+
+    color: #ffffff;
+
+    min-height: 100vh;
+
+    overflow-x: hidden;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.header {
+
+    width: 100%;
+
+    background:
+        rgba(3, 17, 29, 0.98);
+
+    border-bottom:
+        1px solid rgba(0, 191, 255, 0.25);
+
+    box-shadow:
+        0 4px 25px rgba(0, 0, 0, 0.45);
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 100;
+}
+
+
+.header-inner {
+
+    max-width: 1400px;
+
+    margin: auto;
+
+    min-height: 85px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding:
+        12px 30px;
+}
+
+
+/* =========================================
+   LOGO
+========================================= */
+
+.logo-area {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+}
+
+
+.logo-area img {
+
+    width: 55px;
+
+    height: 55px;
+
+    object-fit: contain;
+}
+
+
+.logo-text {
+
+    display: flex;
+
+    flex-direction: column;
+}
+
+
+.logo-text h2 {
+
+    font-size: 16px;
+
+    letter-spacing: 2px;
+
+    color: #ffffff;
+}
+
+
+.logo-text span {
+
+    font-size: 10px;
+
+    letter-spacing: 1.5px;
+
+    color: #55d8ff;
+
+    margin-top: 3px;
+}
+
+
+/* =========================================
+   BACK BUTTON
+========================================= */
+
+.back-button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    padding:
+        9px 17px;
+
+    border:
+        1px solid rgba(0, 191, 255, 0.65);
+
+    border-radius: 5px;
+
+    color:
+        #55d8ff;
+
+    text-decoration: none;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.8px;
+
+    background:
+        rgba(0, 145, 205, 0.12);
+
+    transition:
+        all 0.3s ease;
+}
+
+
+.back-button:hover {
+
+    background:
+        #00bfff;
+
+    color:
+        #031522;
+
+    box-shadow:
+        0 0 15px rgba(0,191,255,0.45);
+
+    transform:
+        translateY(-1px);
+}
+
+
+/* =========================================
+   ARTICLE CONTAINER
+========================================= */
+
+.article-wrapper {
+
+    width: 100%;
+
+    max-width: 1150px;
+
+    margin:
+        45px auto 70px;
+
+    padding:
+        0 25px;
+}
+
+
+/* =========================================
+   ARTICLE HEADER
+========================================= */
+
+.article-header {
+
+    text-align: center;
+
+    margin-bottom: 35px;
+}
+
+
+.article-category {
+
+    display: inline-block;
+
+    padding:
+        6px 14px;
+
+    border:
+        1px solid rgba(0,191,255,0.45);
+
+    border-radius: 20px;
+
+    color:
+        #55d8ff;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    letter-spacing: 1.5px;
+
+    background:
+        rgba(0,191,255,0.08);
+
+    margin-bottom: 18px;
+}
+
+
+.article-header h1 {
+
+    font-size: 36px;
+
+    line-height: 1.3;
+
+    letter-spacing: 0.8px;
+
+    color:
+        #ffffff;
+
+    max-width: 1050px;
+
+    margin:
+        auto;
+}
+
+
+.article-header h1::after {
+
+    content:
+        "";
+
+    display:
+        block;
+
+    width: 80px;
+
+    height: 3px;
+
+    background:
+        #00bfff;
+
+    margin:
+        20px auto 18px;
+
+    border-radius: 5px;
+
+    box-shadow:
+        0 0 10px rgba(0,191,255,0.6);
+}
+
+
+.article-meta {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 20px;
+
+    flex-wrap: wrap;
+
+    color:
+        #8fb8c9;
+
+    font-size: 12px;
+}
+
+
+.article-meta span {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 5px;
+}
+
+
+/* =========================================
+   HERO IMAGE - PHOTO 1
+========================================= */
+
+.hero-image {
+
+    width: 100%;
+
+    height: 500px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    border-radius: 10px;
+
+    border:
+        1px solid rgba(0,191,255,0.35);
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,0.5);
+
+    margin-bottom: 12px;
+}
+
+
+.hero-image img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    transition:
+        transform 0.7s ease;
+}
+
+
+.hero-image:hover img {
+
+    transform:
+        scale(1.03);
+}
+
+
+.hero-overlay {
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(0,0,0,0.05),
+            rgba(0,0,0,0.55)
+        );
+
+    pointer-events: none;
+}
+
+
+.image-caption {
+
+    color:
+        #759aaa;
+
+    font-size: 10px;
+
+    text-align: center;
+
+    margin-bottom: 40px;
+
+    letter-spacing: 0.4px;
+}
+
+
+/* =========================================
+   ARTICLE BODY
+========================================= */
+
+.article-body {
+
+    max-width: 950px;
+
+    margin:
+        auto;
+}
+
+
+/* =========================================
+   INTRODUCTION
+========================================= */
+
+.article-intro {
+
+    font-size: 17px;
+
+    line-height: 1.9;
+
+    color:
+        #dceff7;
+
+    margin-bottom: 28px;
+
+    padding:
+        25px 30px;
+
+    border-left:
+        4px solid #00bfff;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0,191,255,0.09),
+            rgba(0,191,255,0.02)
+        );
+
+    border-radius:
+        0 7px 7px 0;
+}
+
+
+/* =========================================
+   NORMAL PARAGRAPH
+========================================= */
+
+.article-body p {
+
+    font-size: 15px;
+
+    line-height: 1.9;
+
+    color:
+        #c2dce7;
+
+    margin-bottom: 25px;
+
+    text-align: justify;
+}
+
+
+/* =========================================
+   SECTION TITLE
+========================================= */
+
+.section-title {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin:
+        45px 0 20px;
+
+    color:
+        #55d8ff;
+
+    font-size: 19px;
+
+    letter-spacing: 0.5px;
+}
+
+
+.section-title::before {
+
+    content:
+        "";
+
+    width: 5px;
+
+    height: 25px;
+
+    background:
+        #00bfff;
+
+    border-radius: 4px;
+
+    box-shadow:
+        0 0 10px rgba(0,191,255,0.5);
+}
+
+
+/* =========================================
+   ARTICLE IMAGE
+========================================= */
+
+.article-image {
+
+    width: 100%;
+
+    margin:
+        35px 0 10px;
+
+    border-radius: 8px;
+
+    overflow: hidden;
+
+    border:
+        1px solid rgba(0,191,255,0.28);
+
+    background:
+        #041522;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,0.4);
+}
+
+
+.article-image img {
+
+    width: 100%;
+
+    height: 430px;
+
+    object-fit: cover;
+
+    display: block;
+
+    transition:
+        transform 0.6s ease;
+}
+
+
+.article-image:hover img {
+
+    transform:
+        scale(1.025);
+}
+
+
+.article-caption {
+
+    padding:
+        10px 15px 12px;
+
+    text-align: center;
+
+    font-size: 10px;
+
+    color:
+        #759aaa;
+
+    background:
+        rgba(2,15,25,0.8);
+
+    letter-spacing:
+        0.3px;
+}
+
+
+/* =========================================
+   HIGHLIGHT BOX
+========================================= */
+
+.highlight-box {
+
+    margin:
+        35px 0;
+
+    padding:
+        25px 30px;
+
+    border:
+        1px solid rgba(0,191,255,0.25);
+
+    border-radius:
+        8px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(7,37,57,0.85),
+            rgba(3,22,36,0.85)
+        );
+
+    position:
+        relative;
+
+    overflow:
+        hidden;
+}
+
+
+.highlight-box::before {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    left: 0;
+
+    top: 0;
+
+    width: 4px;
+
+    height: 100%;
+
+    background:
+        #00bfff;
+}
+
+
+.highlight-box h3 {
+
+    color:
+        #55d8ff;
+
+    font-size:
+        15px;
+
+    margin-bottom:
+        12px;
+
+    letter-spacing:
+        0.7px;
+}
+
+
+.highlight-box p {
+
+    margin:
+        0;
+
+    font-size:
+        14px;
+
+    line-height:
+        1.8;
+
+    text-align:
+        left;
+}
+
+
+/* =========================================
+   FINAL SECTION
+========================================= */
+
+.article-ending {
+
+    text-align:
+        center;
+
+    margin:
+        55px 0 20px;
+
+    padding:
+        30px;
+
+    border-top:
+        1px solid rgba(0,191,255,0.2);
+
+    border-bottom:
+        1px solid rgba(0,191,255,0.2);
+}
+
+
+.article-ending h3 {
+
+    color:
+        #55d8ff;
+
+    font-size:
+        18px;
+
+    margin-bottom:
+        10px;
+}
+
+
+.article-ending p {
+
+    text-align:
+        center;
+
+    margin:
+        0;
+
+    font-size:
+        13px;
+
+    color:
+        #91b5c4;
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.footer {
+
+    text-align:
+        center;
+
+    padding:
+        22px;
+
+    border-top:
+        1px solid rgba(0,191,255,0.15);
+
+    background:
+        rgba(2,13,22,0.9);
+
+    color:
+        #6f9aaa;
+
+    font-size:
+        11px;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 800px) {
+
+    .header-inner {
+
+        padding:
+            10px 15px;
+    }
+
+
+    .logo-text h2 {
+
+        font-size:
+            13px;
+    }
+
+
+    .logo-text span {
+
+        font-size:
+            8px;
+    }
+
+
+    .article-wrapper {
+
+        margin-top:
+            30px;
+
+        padding:
+            0 15px;
+    }
+
+
+    .article-header h1 {
+
+        font-size:
+            27px;
+    }
+
+
+    .hero-image {
+
+        height:
+            330px;
+    }
+
+
+    .article-body p {
+
+        font-size:
+            14px;
+
+        text-align:
+            left;
+    }
+
+
+    .article-intro {
+
+        font-size:
+            15px;
+
+        padding:
+            20px;
+    }
+
+
+    .article-image img {
+
+        height:
+            300px;
+    }
+
+}
+
+
+@media (max-width: 500px) {
+
+    .header-inner {
+
+        min-height:
+            75px;
+    }
+
+
+    .logo-area img {
+
+        width:
+            45px;
+
+        height:
+            45px;
+    }
+
+
+    .logo-text span {
+
+        display:
+            none;
+    }
+
+
+    .back-button {
+
+        padding:
+            8px 11px;
+
+        font-size:
+            9px;
+    }
+
+
+    .article-header h1 {
+
+        font-size:
+            23px;
+    }
+
+
+    .article-meta {
+
+        font-size:
+            10px;
+
+        gap:
+            10px;
+    }
+
+
+    .hero-image {
+
+        height:
+            250px;
+    }
+
+
+    .article-image img {
+
+        height:
+            240px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================
+     HEADER
+========================================= -->
+
+<header class="header">
+
+    <div class="header-inner">
+
+
+        <div class="logo-area">
+
+            <img
+                src="logo_atc.png"
+                alt="ATC Logo"
+            >
+
+            <div class="logo-text">
+
+                <h2>
+                    AIR TRAFFIC CONTROL
+                </h2>
+
+                <span>
+                    INFORMATION PORTAL
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <a
+            href="main_page_ver2.html"
+            class="back-button"
+        >
+            ← KEMBALI KE PORTAL
+        </a>
+
+
+    </div>
+
+</header>
+
+
+
+<!-- =========================================
+     ARTICLE
+========================================= -->
+
+<main class="article-wrapper">
+
+
+    <!-- =====================================
+         ARTICLE HEADER
+    ====================================== -->
+
+    <section class="article-header">
+
+
+        <div class="article-category">
+
+            BERITA • TRADE MASTER KLLU
+
+        </div>
+
+
+        <h1>
+
+            MESYUARAT PANEL TRED KAWALAN LALU LINTAS UDARA (KLLU) SIRI 5/26
+
+        </h1>
+
+
+        <div class="article-meta">
+
+            <span>
+                📍 SEPANG
+            </span>
+
+            <span>
+                📅 18 OGOS 2026
+            </span>
+
+            <span>
+                ✈ AIR TRAFFIC CONTROL
+            </span>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================
+         PHOTO 1 - HERO
+    ====================================== -->
+
+    <div class="hero-image">
+
+        <img
+            src="panel-kllu-5-26-1.jpg"
+            alt="Mesyuarat Panel Tred KLLU Siri 5/26"
+        >
+
+        <div class="hero-overlay"></div>
+
+    </div>
+
+
+    <div class="image-caption">
+
+        Mesyuarat Panel Tred Kawalan Lalu Lintas Udara (KLLU) Siri 5/26 di Bilik Mesyuarat JAMCC Sepang.
+
+    </div>
+
+
+
+    <!-- =====================================
+         ARTICLE BODY
+    ====================================== -->
+
+    <article class="article-body">
+
+
+        <!-- =================================
+             INTRODUCTION
+        ================================== -->
+
+        <div class="article-intro">
+
+            <strong>
+                SEPANG, 18 Ogos 26
+            </strong>
+            – Komander JAMCC Sepang, Brigedier Jeneral Mohd Shahfreen Bin Baba TUDM selaku Trade Master KLLU telah mempengerusikan Mesyuarat Panel Tred KLLU Siri 5/26 yang berlangsung pada hari ini di Bilik Mesyuarat JAMCC Sepang. Mesyuarat ini turut dihadiri oleh pegawai kanan dan panel tred KLLU yang dijalankan secara fizikal dan juga Video Conference (VC).
+
+        </div>
+
+
+
+        <!-- =================================
+             SECTION 1
+        ================================== -->
+
+        <h2 class="section-title">
+
+            PEMANTAPAN LATIHAN DAN PEMBANGUNAN SUMBER MANUSIA
+
+        </h2>
+
+
+        <p>
+
+            Mesyuarat ini merupakan kesinambungan siri perbincangan strategik tred KLLU, dengan tumpuan khusus terhadap pemantapan latihan dan perancangan sumber manusia bagi memastikan keperluan warga KLLU dapat terus disokong secara berkesan.
+
+        </p>
+
+
+        <p>
+
+            Perbincangan yang dilaksanakan turut memberi penekanan terhadap pembangunan kompetensi dan profesionalisme warga KLLU selaras dengan keperluan operasi serta perkembangan bidang kawalan lalu lintas udara.
+
+        </p>
+
+
+
+        <!-- =====================================
+             PHOTO 2
+        ====================================== -->
+
+        <div class="article-image">
+
+            <img
+                src="panel-kllu-5-26-2.jpg"
+                alt="Panel Tred KLLU Siri 5/26"
+            >
+
+            <div class="article-caption">
+
+                Pegawai kanan dan panel tred KLLU mengikuti Mesyuarat Panel Tred KLLU Siri 5/26 secara fizikal dan Video Conference (VC).
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =====================================
+             SECTION 2
+        ====================================== -->
+
+        <h2 class="section-title">
+
+            PENYELENGGARAAN KESIAPSIAGAAN OPERASI
+
+        </h2>
+
+
+        <p>
+
+            Mesyuarat turut memberi tumpuan kepada pengekalan tahap kesiapsiagaan operasi yang tinggi bagi memastikan keupayaan operasi penerbangan kekal optimum dalam menghadapi keperluan semasa dan cabaran masa hadapan.
+
+        </p>
+
+
+        <div class="highlight-box">
+
+            <h3>
+
+                KESEIMBANGAN KEPERLUAN OPERASI
+
+            </h3>
+
+            <p>
+
+                Pemantapan latihan, perancangan sumber manusia dan pengekalan kesiapsiagaan operasi merupakan antara aspek penting dalam memastikan perkhidmatan kawalan lalu lintas udara sentiasa berada pada tahap keupayaan yang optimum.
+
+            </p>
+
+        </div>
+
+
+
+        <!-- =====================================
+             SECTION 3
+        ====================================== -->
+
+        <h2 class="section-title">
+
+            INOVASI, KESELAMATAN DAN KECEMERLANGAN OPERASI
+
+        </h2>
+
+
+        <p>
+
+            Komitmen berterusan warga KLLU dalam aspek inovasi, keselamatan dan kecemerlangan operasi akan terus menjadi pemacu utama bagi memastikan perkhidmatan kawalan lalu lintas udara kekal relevan dan cekap.
+
+        </p>
+
+
+        <p>
+
+            Usaha berterusan ini juga mencerminkan komitmen warga KLLU untuk meningkatkan keupayaan, memperkukuhkan profesionalisme serta memastikan penyampaian perkhidmatan kawalan lalu lintas udara sentiasa memenuhi keperluan operasi semasa dan masa hadapan.
+
+        </p>
+
+
+
+        <!-- =====================================
+             SECTION 4
+        ====================================== -->
+
+        <h2 class="section-title">
+
+            SELARAS DENGAN MISI TUDM DAN CAP55
+
+        </h2>
+
+
+        <p>
+
+            Keseluruhan perbincangan dan perancangan yang dilaksanakan adalah selaras dengan misi TUDM serta Pelan Pembangunan Keupayaan 2055 (CAP55), khususnya dalam memastikan pembangunan keupayaan dan modal insan terus diperkukuhkan secara berterusan.
+
+        </p>
+
+
+
+        <!-- =====================================
+             FINAL MESSAGE
+        ====================================== -->
+
+        <div class="article-ending">
+
+
+            <p>
+
+                Air Traffic Control • TUDM • KLLU
+
+            </p>
+
+        </div>
+
+
+    </article>
+
+</main>
+
+
+
+<!-- =========================================
+     FOOTER
+========================================= -->
+
+<footer class="footer">
+
+    Air Traffic Control Information Portal © 2026
+
+</footer>
+
+
+</body>
+
+</html>

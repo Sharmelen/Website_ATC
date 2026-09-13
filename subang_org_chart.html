@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ATC Document Viewer</title>
+
+<style>
+
+/* ==============================
+   GLOBAL
+============================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background:
+        radial-gradient(circle at center, rgba(0, 120, 255, 0.12), transparent 45%),
+        linear-gradient(135deg, #06111d, #0a1d2d 50%, #04101a);
+    color: white;
+    overflow-x: hidden;
+}
+
+
+/* ==============================
+   HEADER
+============================== */
+
+.header {
+    width: 100%;
+    height: 90px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 10px 30px;
+
+    background: rgba(5, 18, 30, 0.95);
+
+    border-bottom: 1px solid rgba(0, 180, 255, 0.35);
+
+    box-shadow:
+        0 5px 25px rgba(0, 0, 0, 0.4);
+}
+
+
+/* ATC LOGO */
+
+.atc-logo {
+    height: 65px;
+    width: auto;
+    object-fit: contain;
+}
+
+
+/* AIR FORCE LOGO */
+
+.airforce-logo {
+    height: 65px;
+    width: auto;
+    object-fit: contain;
+}
+
+
+/* ==============================
+   TITLE
+============================== */
+
+.title-section {
+    text-align: center;
+    padding: 25px 20px 10px;
+}
+
+.title-section h1 {
+    font-size: 28px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.title-section p {
+    margin-top: 6px;
+    font-size: 14px;
+    color: #8ecfff;
+}
+
+
+/* ==============================
+   DOCUMENT AREA
+============================== */
+
+.document-wrapper {
+
+    width: 92%;
+    max-width: 1200px;
+
+    margin: 25px auto 50px;
+
+    background: rgba(255, 255, 255, 0.04);
+
+    border: 1px solid rgba(0, 180, 255, 0.3);
+
+    border-radius: 12px;
+
+    padding: 20px;
+
+    box-shadow:
+        0 10px 40px rgba(0, 0, 0, 0.45);
+
+}
+
+
+/* ==============================
+   PDF PAGE LOOK
+============================== */
+
+.pdf-page {
+
+    width: 100%;
+    height: auto;
+
+    display: block;
+
+    background: white;
+
+    margin: 0 auto 25px;
+
+    border-radius: 4px;
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.4);
+
+}
+
+
+/* Remove margin from last page */
+
+.pdf-page:last-child {
+    margin-bottom: 0;
+}
+
+
+/* ==============================
+   FOOTER
+============================== */
+
+.footer {
+
+    text-align: center;
+
+    padding: 20px;
+
+    color: #7090a5;
+
+    font-size: 12px;
+
+    border-top: 1px solid rgba(0, 180, 255, 0.2);
+}
+
+
+/* ==============================
+   MOBILE
+============================== */
+
+@media (max-width: 700px) {
+
+    .header {
+        height: 75px;
+        padding: 8px 15px;
+    }
+
+    .atc-logo,
+    .airforce-logo {
+        height: 50px;
+    }
+
+    .title-section h1 {
+        font-size: 21px;
+    }
+
+    .document-wrapper {
+        width: 96%;
+        padding: 10px;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<!-- ==============================
+     HEADER
+============================== -->
+
+<header class="header">
+
+    <!-- TUDM LOGO -->
+    <img
+        src="logo_tudm.png"
+        class="airforce-logo"
+        alt="TUDM Logo"
+    >
+
+
+    <!-- ATC LOGO -->
+    <img
+        src="logo_atc.png"
+        class="atc-logo"
+        alt="ATC Logo"
+    >
+
+</header>
+
+
+<!-- ==============================
+     TITLE
+============================== -->
+
+<section class="title-section">
+
+    <h1>CARTA ORGANISASI CAWANGAN OPERASI<br>PU SUBANG</h1>
+
+
+</section>
+
+
+<!-- ==============================
+     DOCUMENT
+============================== -->
+
+<div class="document-wrapper">
+
+    <!-- PAGE 1 -->
+    <img
+        src="org_chart_subang.png"
+        class="pdf-page"
+        alt="Document Page 1"
+    >
+
+</div>
+
+
+<!-- ==============================
+     FOOTER
+============================== -->
+
+<footer class="footer">
+
+    ATC Information Portal
+
+</footer>
+
+
+</body>
+</html>
